@@ -10,7 +10,7 @@ const cartSlice = createSlice({
     name: 'sneakers',
     initialState,
     reducers: {
-        getSneakers: (state, action: PayloadAction<SneakersType[]>) => {
+        setSneakers: (state, action: PayloadAction<SneakersType[]>) => {
             state.sneakers = action.payload
         },
 
@@ -30,6 +30,6 @@ const cartSlice = createSlice({
     },
 })
 
-export const { getSneakers } = cartSlice.actions;
+export const { setSneakers } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -1,10 +1,11 @@
 import React, { FC, useEffect } from "react";
 import clsx from "clsx";
-// import { fetchSneakers, selectSneakersData } from "../../redux/slices/sneakers/cartSlice";
 import { useAppDispath, useAppSelector } from "../../hook";
 import Card from "../../components/Card/Card";
 import { fetchSneakers } from "../../redux/sneakers/asyncAction";
 import { selectSneakersData } from "../../redux/sneakers/selectors";
+import Skeleton from "../../components/Card/Skeleton";
+
 
 const loupe = './assets/img/loupe.svg';
 
@@ -22,6 +23,9 @@ const Home: FC = () => {
         getSneakers();
     }, [])
 
+    const sneakersSnip = sneakers.map((obj) => (<Card key={obj.id} {...obj} />));
+    const sneakersSkeleton = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
+
     return (
         <div className={'product'}>
             <div className={'product-headline'}>
@@ -35,16 +39,12 @@ const Home: FC = () => {
             </div>
             <ul className={'product-list'}>
                 {
-                    sneakers && sneakers.map((obj) => (
-                        <Card
-                            key={obj.id}
-                            {...obj}
-                        />
-                    ))
+                    sneakers.length > 0 ? sneakersSnip : sneakersSkeleton
                 }
             </ul>
         </div>
     );
 }
+
 
 export default Home;

@@ -1,4 +1,10 @@
 .product{
+    &-list{
+        &__item{
+            display: flex;
+            justify-content: center;
+        }
+    }
     &-card{
         padding: 20px 25px 34px 25px;
         background-color: var(--light-color);
@@ -52,6 +58,10 @@
         }
         &__favorite{
             position: absolute;
+        }
+        &__skeleton{
+            display: flex;
+            justify-content: center;
         }
     }
 }
