@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import clsx from "clsx";
 import Card from "../../components/Card/Card";
 import Skeleton from "../../components/Card/Skeleton";

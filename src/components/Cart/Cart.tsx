@@ -3,6 +3,7 @@ import React, { FC, useEffect } from 'react';
 import { CartSneakersType } from '../../globalTypes';
 import CartItem from '../CartItem/CartItem';
 import style from './Cart.module.scss';
+import CartEmpty from './CartEmpty';
 
 const arrow = './../assets/img/arrow.svg';
 
@@ -12,8 +13,9 @@ type CartType = {
     totalPrice: number
 }
 
-const Cart: FC<CartType> = ({ toggleCart, cartItems, totalPrice }) => {
 
+
+const Cart: FC<CartType> = ({ toggleCart, cartItems, totalPrice }) => {
     return (
         <div className={style['cart-shadow']}>
             <div className={style.cart}>
@@ -25,7 +27,10 @@ const Cart: FC<CartType> = ({ toggleCart, cartItems, totalPrice }) => {
                     <>
                         <ul className={style['cart-main']}>
                             {
-                                cartItems && cartItems?.map((obj) => (<CartItem key={obj.parentId} {...obj} />))
+                                cartItems.length > 0 ?
+                                    cartItems?.map((obj) => (<CartItem key={obj.parentId} {...obj} />)) :
+                                    <CartEmpty toggleCart={toggleCart} />
+
                             }
                         </ul>
                         <div className={style['cart-footer']}>

@@ -4,7 +4,6 @@ import { useGetCartItemsQuery } from '../../redux/sneakersAPI';
 import Cart from '../Cart/Cart';
 import style from './../Header/Hedaer.module.scss';
 
-
 const logo = './../assets/img/image 4.svg';
 const cart = './../assets/img/Group.svg';
 const heart = './../assets/img/heart.svg';
@@ -15,7 +14,7 @@ const Header: FC = () => {
     const [cartOpen, setCartOpen] = useState<boolean>(false);
     const [totalPrice, setTotalPrtice] = useState(0);
 
-    const { data = [] } = useGetCartItemsQuery();
+    const { data = [],  } = useGetCartItemsQuery();
 
     useEffect(() => {
         setTotalPrtice(data.reduce((acc, current) => acc + current.price, 0)) 
