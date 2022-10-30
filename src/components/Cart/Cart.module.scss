@@ -59,6 +59,7 @@
         font-size: 24px;
         line-height: 29px;
         color: var(--black-color);
+        user-select: none;
     }
     &-main{
         margin-top: 30px;
@@ -188,56 +189,5 @@
             }
         }
     }
-    &-footer{
-        display: block;
-        &__list{
-            margin-bottom: 25px;
-        }
-        &-item{
-            display: flex;
-            align-items: flex-end;
-            &:not(:last-child){
-                margin-bottom: 20px;
-            }
-            &__key{
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 19px;
-                color: var(--black-color);
-            }
-            &__dashes{
-                flex: 1;
-                border-bottom: 1px dashed var(--gray-color);
-                position: relative;
-                bottom: 4px;
-                margin: 0 10px;
-            }
-            &__value{
-                font-weight: 600;
-                font-size: 16px;
-                line-height: 19px;
-                color: var(--black-color);
-            }
-        }
-        &__btn{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: .3s;
-            img{
-                position: relative;
-                left: 50px;
-                transition: .3s;
-            }
-            &:hover{
-                background: lighten(#9DD458, 5%);
-                img{
-                    transform: translateX(10px);
-                }
-            }
-            &:active{
-                background: darken(#9DD458, 10%);
-            }
-        }
-    }
+    
 }

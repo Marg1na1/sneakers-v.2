@@ -14,7 +14,8 @@ const NotFound: FC = () => {
             <p className={style['not-found__descr']}>Не удалось найти данную страницу попробуйте позже</p>
             <Link to='/'>
                 <div className={clsx(style['not-found__btn'], 'btn-reset')}>
-                    <img src={rightArrow} />      Вернуться назад
+                    <img src={rightArrow} />
+                    Вернуться назад
                 </div>
             </Link>
         </div>
