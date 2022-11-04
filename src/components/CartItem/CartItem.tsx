@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React, { FC } from 'react';
 import { CartSneakersType } from '../../globalTypes';
 import { useDeleteSneakersMutation } from '../../redux/sneakersAPI';
-import style from './CartItem.module.scss'
+import style from './CartItem.module.scss';
 
 
 const CartItem: FC<CartSneakersType> = ({ id, name, parentId, price, img }) => {

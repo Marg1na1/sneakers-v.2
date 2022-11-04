@@ -5,12 +5,11 @@ import EmptyFavorite from "./EmptyFavorite";
 
 import style from './Favorites.module.scss';
 
-
 const Favorites: FC = () => {
 
     const { data = [], isLoading } = useGetFavoritesItemQuery();
 
-    const favoritesSnip = data.map((obj, id) => (<Card key={id} {...obj} />));
+    const favoritesSnip = data.map((obj, i) => (<Card key={i}  {...obj} />));
 
     return (
         <div className={style['favorite']}>

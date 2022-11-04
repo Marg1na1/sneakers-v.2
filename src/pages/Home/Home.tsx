@@ -12,7 +12,7 @@ const Home: FC = () => {
 
     const { data = [], isLoading } = useGetSneakersQuery()
 
-    const sneakersSnip = data.map((obj, id) => (<Card key={id} {...obj} />));
+    const sneakersSnip = data.map((obj, i) => (<Card key={i} {...obj} />));
     const sneakersSkeleton = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
 
     return (

@@ -1,6 +1,8 @@
+import axios from 'axios';
 import clsx from 'clsx';
 import React, { FC } from 'react';
 import { CartSneakersType } from '../../globalTypes';
+import { useAddOrderMutation } from '../../redux/sneakersAPI';
 import CartFooter from '../CartFooter/CartFooter';
 import CartItem from '../CartItem/CartItem';
 import style from './Cart.module.scss';
@@ -8,15 +10,21 @@ import CartEmpty from './CartEmpty';
 
 
 
-type CartType = {
+type CartPropsType = {
     toggleCart: () => boolean | void
     cartItems: CartSneakersType[]
     totalPrice: number
 }
 
+const Cart: FC<CartPropsType> = ({ toggleCart, cartItems, totalPrice }) => {
 
+    const [addOrders] = useAddOrderMutation();
 
-const Cart: FC<CartType> = ({ toggleCart, cartItems, totalPrice }) => {
+    const checkoutSneakers = async () => {
+        console.log(cartItems)
+        await addOrders(cartItems)
+    }   
+
     return (
         <div className={style['cart-shadow']}>
             <div className={style.cart}>
@@ -35,7 +43,7 @@ const Cart: FC<CartType> = ({ toggleCart, cartItems, totalPrice }) => {
                             }
                         </ul>
                         {
-                            cartItems.length > 0 && <CartFooter totalPrice={totalPrice} />
+                            cartItems.length > 0 && <CartFooter totalPrice={totalPrice} checkoutSneakers={checkoutSneakers} />
                         }
                     </>
                 }

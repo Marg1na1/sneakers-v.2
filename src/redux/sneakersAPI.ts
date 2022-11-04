@@ -5,7 +5,7 @@ export const url: string = 'https://6351a086dfe45bbd55c560cb.mockapi.io';
 
 export const sneakersApi = createApi({
     reducerPath: 'sneakersApi',
-    tagTypes: ['CartItems', 'FavoriteItems'],
+    tagTypes: ['CartItems', 'FavoriteItems', 'OrderItems'],
     baseQuery: fetchBaseQuery({ baseUrl: url }),
     endpoints: (builder) => ({
         getSneakers: builder.query<SneakersType[], void>({
@@ -25,6 +25,13 @@ export const sneakersApi = createApi({
                     ? [...result.map(({ id }) => ({ type: 'FavoriteItems' as const, id })), 'FavoriteItems']
                     : ['FavoriteItems'],
         }),
+        getOrders: builder.query<CartSneakersType[], void>({
+            query: () => 'orders',
+            providesTags: (result) =>
+                result
+                    ? [...result.map(({ id }) => ({ type: 'OrderItems' as const, id })), 'OrderItems']
+                    : ['OrderItems'],
+        }),
         addSneakers: builder.mutation({
             query: ({ id, ...data }) => ({
                 url: `cartItems`,
@@ -34,12 +41,20 @@ export const sneakersApi = createApi({
             invalidatesTags: ['CartItems'],
         }),
         addFavorites: builder.mutation({
-            query: ({ id, ...data }) => ({
+            query: ({ ...data }) => ({
                 url: 'favorites',
                 method: 'POST',
                 body: data,
             }),
             invalidatesTags: ['FavoriteItems'],
+        }),
+        addOrder: builder.mutation({
+            query: ({ id, ...data }) => ({
+                url: 'orders',
+                method: 'POST',
+                body: data,
+            }),
+            invalidatesTags: ['OrderItems'],
         }),
         deleteSneakers: builder.mutation({
             query: (id) => ({
@@ -58,6 +73,14 @@ export const sneakersApi = createApi({
     }),
 })
 
-export const { useGetSneakersQuery, useGetCartItemsQuery, useAddSneakersMutation, useDeleteSneakersMutation, useAddFavoritesMutation, useGetFavoritesItemQuery, useDeleteFavoriteItemMutation } = sneakersApi
-
-// <CartSneakersType, Partial<CartSneakersType> & Pick<CartSneakersType, 'id'>> 
+export const {
+    useGetSneakersQuery,
+    useGetCartItemsQuery,
+    useAddSneakersMutation,
+    useDeleteSneakersMutation,
+    useAddFavoritesMutation,
+    useGetFavoritesItemQuery,
+    useDeleteFavoriteItemMutation,
+    useAddOrderMutation,
+    useGetOrdersQuery,
+} = sneakersApi
