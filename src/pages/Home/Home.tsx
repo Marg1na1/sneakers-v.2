@@ -10,7 +10,7 @@ const loupe = './assets/img/loupe.svg';
 
 const Home: FC = () => {
 
-    const { data = [], isLoading } = useGetSneakersQuery()
+    const { data = [], isLoading, } = useGetSneakersQuery();
 
     const sneakersSnip = data.map((obj, i) => (<Card key={i} {...obj} />));
     const sneakersSkeleton = [...new Array(8)].map((_, index) => <Skeleton key={index} />);

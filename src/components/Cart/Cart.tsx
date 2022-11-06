@@ -1,29 +1,30 @@
-import axios from 'axios';
-import clsx from 'clsx';
 import React, { FC } from 'react';
-import { CartSneakersType } from '../../globalTypes';
-import { useAddOrderMutation } from '../../redux/sneakersAPI';
+import clsx from 'clsx';
+import { useAddOrderMutation, useDeleteSneakersMutation, useGetCartItemsQuery } from '../../redux/sneakersAPI';
 import CartFooter from '../CartFooter/CartFooter';
 import CartItem from '../CartItem/CartItem';
 import style from './Cart.module.scss';
 import CartEmpty from './CartEmpty';
 
-
-
 type CartPropsType = {
     toggleCart: () => boolean | void
-    cartItems: CartSneakersType[]
     totalPrice: number
 }
 
-const Cart: FC<CartPropsType> = ({ toggleCart, cartItems, totalPrice }) => {
+const Cart: FC<CartPropsType> = ({ toggleCart, totalPrice }) => {
+
+    const { data = [] } = useGetCartItemsQuery();
 
     const [addOrders] = useAddOrderMutation();
 
+    const [deleteCartItems] = useDeleteSneakersMutation();
+
     const checkoutSneakers = async () => {
-        console.log(cartItems)
-        await addOrders(cartItems)
-    }   
+        // setTimeout(() => { data.length > 0 && data.forEach(async (obj) => await addOrders(obj)) }, 0)
+        // setTimeout(() => { data.length > 0 && data.forEach(async (obj) => await deleteCartItems(obj.id)) }, 1000)
+        addOrders(data);
+    }
+
 
     return (
         <div className={style['cart-shadow']}>
@@ -36,14 +37,14 @@ const Cart: FC<CartPropsType> = ({ toggleCart, cartItems, totalPrice }) => {
                     <>
                         <ul className={style['cart-main']}>
                             {
-                                cartItems.length > 0 ?
-                                    cartItems?.map((obj) => (<CartItem key={obj.parentId} {...obj} />)) :
+                                data.length > 0 ?
+                                    data?.map((obj) => (<CartItem key={obj.parentId} {...obj} />)) :
                                     <CartEmpty toggleCart={toggleCart} />
 
                             }
                         </ul>
                         {
-                            cartItems.length > 0 && <CartFooter totalPrice={totalPrice} checkoutSneakers={checkoutSneakers} />
+                            data.length > 0 && <CartFooter totalPrice={totalPrice} checkoutSneakers={checkoutSneakers} />
                         }
                     </>
                 }

@@ -8,12 +8,8 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 40px;
-        &__item{
-            display: flex;
-            justify-content: center;
-        }
     }
-    &-not-found{
+    &-empty{
         padding: 240px 60px;
     display: flex;
     flex-direction: column;

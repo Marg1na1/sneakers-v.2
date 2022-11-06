@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useGetCartItemsQuery } from '../../redux/sneakersAPI';
+import useGetTotalPrice from '../../Hook/useGetTotalPrice';
 import Cart from '../Cart/Cart';
 import style from './../Header/Hedaer.module.scss';
 
@@ -12,13 +12,8 @@ const profile = './../assets/img/Union.svg';
 const Header: FC = () => {
 
     const [cartOpen, setCartOpen] = useState<boolean>(false);
-    const [totalPrice, setTotalPrtice] = useState(0);
 
-    const { data = [],  } = useGetCartItemsQuery();
-
-    useEffect(() => {
-        setTotalPrtice(data.reduce((acc, current) => acc + current.price, 0)) 
-    }, [data]);
+    const totalPrice = useGetTotalPrice(); 
 
     const toggleCart = () => {
         setCartOpen(!cartOpen)
@@ -40,7 +35,7 @@ const Header: FC = () => {
     return (
         <header className={style.header}>
             {
-                cartOpen && <Cart toggleCart={toggleCart} cartItems={data} totalPrice={totalPrice} />
+                cartOpen && <Cart toggleCart={toggleCart} totalPrice={totalPrice} />
             }
             <Link to="/">
                 <div className={style['header-left']}>
@@ -61,7 +56,7 @@ const Header: FC = () => {
                         <img src={heart} alt="" />
                     </li>
                 </Link>
-                <Link to="/profile" className={style['header-right__item']}>
+                <Link to="/orders" className={style['header-right__item']}>
                     <li>
                         <img src={profile} alt="" />
                     </li>

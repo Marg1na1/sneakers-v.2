@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
+import EmptyStatePage from './components/EmptyStatePage/EmptyStatePage';
 import Layout from './layout/Layout';
 import Favorites from './pages/Favorites/Favorites';
 import Home from './pages/Home/Home';
-import NotFound from './pages/NotFound/NotFound';
 import Orders from './pages/Orders/Orders';
-import { useGetFavoritesItemQuery } from './redux/sneakersAPI';
+
+const boredFace = './assets/img/bored_face.svg'
 
 const App: FC = () => {
 
@@ -16,8 +16,12 @@ const App: FC = () => {
                 <Route path='/' element={<Layout />}>
                     <Route index element={<Home />} />
                     <Route path='favorites' element={<Favorites />} />
-                    <Route path='profile' element={<Orders />} />
-                    <Route path='*' element={<NotFound />} />
+                    <Route path='orders' element={<Orders />} />
+                    <Route path='*' element={<EmptyStatePage
+                        title={'Не найденно'}
+                        message={'Не удалось найти данную страницу попробуйте позже'}
+                        imgUrl={boredFace}
+                    />} />
                 </Route>
             </Routes>
         </>

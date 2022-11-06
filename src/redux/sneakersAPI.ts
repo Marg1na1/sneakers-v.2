@@ -1,7 +1,7 @@
-import { SneakersType, CartSneakersType } from '../globalTypes';
+import { SneakersType, CartSneakersType, OrdersType} from '../globalTypes';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const url: string = 'https://6351a086dfe45bbd55c560cb.mockapi.io';
+import { url } from './apiKey.env';
 
 export const sneakersApi = createApi({
     reducerPath: 'sneakersApi',
@@ -25,7 +25,7 @@ export const sneakersApi = createApi({
                     ? [...result.map(({ id }) => ({ type: 'FavoriteItems' as const, id })), 'FavoriteItems']
                     : ['FavoriteItems'],
         }),
-        getOrders: builder.query<CartSneakersType[], void>({
+        getOrders: builder.query<OrdersType[], void>({
             query: () => 'orders',
             providesTags: (result) =>
                 result
@@ -70,6 +70,13 @@ export const sneakersApi = createApi({
             }),
             invalidatesTags: ['FavoriteItems'],
         }),
+        deleteOrder: builder.mutation({
+            query: (id) => ({
+                url: `orders/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['OrderItems'],
+        }),
     }),
 })
 
@@ -83,4 +90,5 @@ export const {
     useDeleteFavoriteItemMutation,
     useAddOrderMutation,
     useGetOrdersQuery,
+    useDeleteOrderMutation
 } = sneakersApi

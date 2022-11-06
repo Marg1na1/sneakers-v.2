@@ -14,3 +14,9 @@ export type CartSneakersType = {
     parentId: number
     createdAt: string
 }
+
+export type OrdersType = {
+    [key: number] : CartSneakersType;
+    createdAt: string;
+    id: string;
+}

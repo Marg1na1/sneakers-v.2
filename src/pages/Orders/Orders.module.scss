@@ -1,0 +1,13 @@
+.orders{
+    padding: 40px 60px;
+    min-height: 75vh;
+    &-title{
+        margin-bottom: 80px;
+    }
+    &-list{
+        // display: grid;
+        // grid-template-columns: repeat(4, 1fr);
+        // gap: 40px;
+        flex-direction: column;
+    }
+}

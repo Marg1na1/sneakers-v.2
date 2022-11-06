@@ -28,8 +28,10 @@ const Card: FC<SneakersType> = ({ img, name, price, id, parentId }) => {
 
     useEffect(() => {
         if (!cartItems.isLoading) {
-            if (cartItems.data!.some((obj) => Number(obj.parentId) === Number(id))) {
+            if (cartItems.data!.some((obj) => Number(obj.parentId) === Number(parentId))) {
                 setIsAdded(true)
+            } else {
+                setIsAdded(false)
             }
         }
     }, [cartItems.data]);
@@ -50,9 +52,9 @@ const Card: FC<SneakersType> = ({ img, name, price, id, parentId }) => {
 
     const [deleteFavorite] = useDeleteFavoriteItemMutation();
 
-    const clickAdded = async (id: number) => {
-        if (cartItems.data!.some((obj) => Number(obj.parentId) === Number(id))) {
-            let exId = cartItems.data!.find((obj) => Number(obj.parentId) === Number(id))
+    const clickAdded = async () => {
+        if (cartItems.data!.some((obj) => Number(obj.parentId) === Number(parentId))) {
+            let exId = cartItems.data!.find((obj) => Number(obj.parentId) === Number(parentId))
             await deleteItem(exId!.id)
             setIsAdded(false)
         } else {
@@ -84,7 +86,7 @@ const Card: FC<SneakersType> = ({ img, name, price, id, parentId }) => {
                         <div className={style['product-card__cost']}>Цена:</div>
                         <div className={style['product-card__price']}>{price} руб.</div>
                     </div>
-                    <button className={clsx(style['product-card__btn'], 'btn-reset')} onClick={() => clickAdded(id)}>
+                    <button className={clsx(style['product-card__btn'], 'btn-reset')} onClick={() => clickAdded()}>
                         <img src={isAdded ? added : unadded} />
                     </button>
                 </div>

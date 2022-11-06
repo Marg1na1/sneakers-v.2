@@ -1,0 +1,33 @@
+.orders-section{
+    &__item{
+        display: flex; 
+    }
+    &-info{
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__name{
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 19px;
+        color: var(--black-color);
+    }
+    &__price{
+        margin-top: 25px;
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 19px;
+        color: var(--black-color);
+        span{
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 19px;
+            color: var(--black-color);
+            margin-left: 8px;
+            margin-right: 4px;
+        }
+    }
+}
+
