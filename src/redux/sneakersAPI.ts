@@ -79,7 +79,7 @@ export const sneakersApi = createApi({
         }),
         deleteOrder: builder.mutation({
             query: (id) => ({
-                url: `orders${id}`,
+                url: `orders/${id}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ['OrderItems'],
