@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import style from './OrderSection.module.scss';
-import OrderItem from './../OrderItem/OrderItem'
+import OrderItem from './../OrderItem/OrderItem';
 import { useDeleteOrderMutation } from '../../redux/sneakersAPI';
-import { CartSneakersType, OrdersType } from '../../globalTypes'; 
+import { CartSneakersType, OrdersType } from '../../globalTypes';
 
-const OrderSection: FC<OrdersType> = ( obj ) => { 
+const OrderSection: FC<OrdersType> = (obj) => {
 
     const orderItemsArr: any[] = [];
 
@@ -45,4 +45,4 @@ const OrderSection: FC<OrdersType> = ( obj ) => {
     );
 }
 
-export default OrderSection
+export default OrderSection;

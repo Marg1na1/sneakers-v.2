@@ -1,10 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import clsx from 'clsx';
-import { useAddOrderMutation, useDeleteSneakersMutation, useGetCartItemsQuery } from '../../redux/sneakersAPI';
+import { useGetCartItemsQuery } from '../../redux/sneakersAPI';
 import CartFooter from '../CartFooter/CartFooter';
 import CartItem from '../CartItem/CartItem';
 import style from './Cart.module.scss';
 import CartEmpty from './CartEmpty';
+import ErrorModal from '../ErrorModal/ErrorModal';
+import useSendOrder from '../../Hook/useSendOrder';
 
 type CartPropsType = {
     toggleCart: () => boolean | void
@@ -13,43 +15,65 @@ type CartPropsType = {
 
 const Cart: FC<CartPropsType> = ({ toggleCart, totalPrice }) => {
 
-    const { data = [] } = useGetCartItemsQuery();
+    const [anError, setAnError] = useState({ isError: false })
 
-    const [addOrders] = useAddOrderMutation();
+    const { data = [], error } = useGetCartItemsQuery();
 
-    const [deleteCartItems] = useDeleteSneakersMutation();
+    const { checkoutSneakers } = useSendOrder(setAnError);
 
-    const checkoutSneakers = async () => {
-        // setTimeout(() => { data.length > 0 && data.forEach(async (obj) => await addOrders(obj)) }, 0)
-        // setTimeout(() => { data.length > 0 && data.forEach(async (obj) => await deleteCartItems(obj.id)) }, 1000)
-        addOrders(data);
+    if (error) {
+        return (
+            <div className={style['cart-shadow']}>
+                <div className={style.cart}>
+                    <div className={style['cart-headline']}>
+                        <h2 className={style['cart-title']}>Корзина</h2>
+                        <button className={clsx(style['cart-btn'], 'btn-reset')} onClick={toggleCart}></button>
+                    </div>
+                    <div>Ошибка</div>
+                </div>
+            </div>
+        );
+    } else if (data.length === 0) {
+        return (
+            <div className={style['cart-shadow']}>
+                <div className={style.cart}>
+                    <div className={style['cart-headline']}>
+                        <h2 className={style['cart-title']}>Корзина</h2>
+                        <button className={clsx(style['cart-btn'], 'btn-reset')} onClick={toggleCart}></button>
+                    </div>
+                    {
+                        <>
+                            <ul className={style['cart-main']}>
+                                <CartEmpty toggleCart={toggleCart} />
+                            </ul>
+                        </>
+                    }
+                </div>
+            </div>
+        );
     }
 
-
     return (
-        <div className={style['cart-shadow']}>
-            <div className={style.cart}>
-                <div className={style['cart-headline']}>
-                    <h2 className={style['cart-title']}>Корзина</h2>
-                    <button className={clsx(style['cart-btn'], 'btn-reset')} onClick={toggleCart}></button>
-                </div>
-                {
+        <>
+            {//@ts-ignore
+                anError.isError && <ErrorModal {...anError} />}
+            <div className={style['cart-shadow']}>
+                <div className={style.cart}>
+                    <div className={style['cart-headline']}>
+                        <h2 className={style['cart-title']}>Корзина</h2>
+                        <button className={clsx(style['cart-btn'], 'btn-reset')} onClick={toggleCart}></button>
+                    </div>
                     <>
                         <ul className={style['cart-main']}>
                             {
-                                data.length > 0 ?
-                                    data?.map((obj) => (<CartItem key={obj.parentId} {...obj} />)) :
-                                    <CartEmpty toggleCart={toggleCart} />
-
+                                data?.map((obj, i) => (<CartItem key={i} {...obj} setAnError={setAnError} />))
                             }
                         </ul>
-                        {
-                            data.length > 0 && <CartFooter totalPrice={totalPrice} checkoutSneakers={checkoutSneakers} />
-                        }
+                        <CartFooter totalPrice={totalPrice} checkoutSneakers={checkoutSneakers} />
                     </>
-                }
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 

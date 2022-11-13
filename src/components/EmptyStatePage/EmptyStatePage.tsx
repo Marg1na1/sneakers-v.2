@@ -2,11 +2,16 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import style from './EmptyStatePage.module.scss';
 import clsx from "clsx";
-import { withEmptyPage } from '../../hoc/withEmptyPage';
 
 const rightArrow = './../assets/img/right-arrow.svg'
 
-const EmptyStatePage: FC<any> = ({ title, message, imgUrl }) => {
+type EmptyStatePage = {
+    title: string;
+    message: string;
+    imgUrl: string;
+}
+
+const EmptyStatePage: FC<EmptyStatePage> = ({ title, message, imgUrl }) => {
     return (
         <div className={style['empty']}>
             <img className={style['empty__image']} src={imgUrl} />
@@ -22,5 +27,5 @@ const EmptyStatePage: FC<any> = ({ title, message, imgUrl }) => {
     );
 }
 
-export default withEmptyPage(EmptyStatePage);
+export default EmptyStatePage;
 

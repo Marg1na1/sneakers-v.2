@@ -3,7 +3,7 @@ export type SneakersType = {
     name: string
     price: number
     img: string
-    parentId?: number
+    parentId: number
 }
 
 export type CartSneakersType = {
@@ -16,7 +16,23 @@ export type CartSneakersType = {
 }
 
 export type OrdersType = {
-    [key: number] : CartSneakersType;
+    [key: number]: CartSneakersType;
     createdAt: string;
     id: string;
 }
+
+export type ErrorResponseType = {
+    endpointName?: string;
+    error?: { status: number; data: string };
+    isError?: boolean;
+    isLoading?: boolean;
+    isSuccess?: boolean;
+    isUninitialized?: boolean;
+    originalArgs?: SneakersType | undefined;
+    requestId?: string;
+    reset?: () => void;
+    startedTimeStamp?: number;
+    status?: string;
+}
+
+

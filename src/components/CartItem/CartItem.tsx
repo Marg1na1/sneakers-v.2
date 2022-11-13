@@ -4,13 +4,26 @@ import { CartSneakersType } from '../../globalTypes';
 import { useDeleteSneakersMutation } from '../../redux/sneakersAPI';
 import style from './CartItem.module.scss';
 
+type cartItemTestProps = {
+    id: string;
+    name: string;
+    parentId: number;
+    price: number;
+    img: string;
+    setAnError: any;
+}
 
-const CartItem: FC<CartSneakersType> = ({ id, name, parentId, price, img }) => {
 
-    const [deleteItem] = useDeleteSneakersMutation();
+const CartItem: FC<cartItemTestProps> = ({ id, name, parentId, price, img, setAnError }) => {
+
+    const [deleteItem, deleteItemStatuses] = useDeleteSneakersMutation(); 
 
     const clickDelete = async (id: string) => {
         await deleteItem(id)
+    }
+
+    if (deleteItemStatuses.isError) {
+        setAnError(deleteItemStatuses)
     }
 
     return (

@@ -1,82 +1,35 @@
 import clsx from "clsx";
-import React, { useState, FC, useEffect } from "react";
-import { SneakersType, CartSneakersType } from "../../globalTypes";
+import React, { FC } from "react";
+import { SneakersType, ErrorResponseType } from "../../globalTypes";
 import style from './Card.module.scss';
-import {
-    useAddSneakersMutation,
-    useDeleteSneakersMutation,
-    useGetCartItemsQuery,
-    useAddFavoritesMutation,
-    useGetFavoritesItemQuery,
-    useDeleteFavoriteItemMutation
-} from "../../redux/sneakersAPI";
+import useClickAddHandler from "../../Hook/useClickAddHandler";
+import useClickFavoriteHandler from "../../Hook/useClickFavoriteHandler";
 
 const added = './../assets/img/plus-chaked.svg';
 const unadded = './../assets/img/unactive-plus.svg';
 const liked = './../assets/img/liked.svg';
 const unliked = './../assets/img/unliked.svg';
 
-const Card: FC<SneakersType> = ({ img, name, price, id, parentId }) => {
+type test = {
+    id: number;
+    name: string;
+    price: number;
+    img: string;
+    parentId: number;
+    setAnError: (x: any) => void;
+}
+
+const Card: FC<test> = ({ img, name, price, id, parentId, setAnError }) => {
 
     const obj = { img, name, price, id, parentId };
 
-    const [isAdded, setIsAdded] = useState(false);
-    const [isFavorite, setIsFavorite] = useState(false);
-
-    const cartItems = useGetCartItemsQuery();
-    const favoriteItems = useGetFavoritesItemQuery();
-
-    useEffect(() => {
-        if (!cartItems.isLoading) {
-            if (cartItems.data!.some((obj) => Number(obj.parentId) === Number(parentId))) {
-                setIsAdded(true)
-            } else {
-                setIsAdded(false)
-            }
-        }
-    }, [cartItems.data]);
-
-    useEffect(() => {
-        if (!favoriteItems.isLoading) {
-            if (favoriteItems.data!.some((obj) => Number(obj.parentId) === Number(parentId))) {
-                setIsFavorite(true)
-            }
-        }
-    }, [favoriteItems.data]);
-
-    const [addSneakers] = useAddSneakersMutation();
-
-    const [deleteItem] = useDeleteSneakersMutation();
-
-    const [addFavorite] = useAddFavoritesMutation();
-
-    const [deleteFavorite] = useDeleteFavoriteItemMutation();
-
-    const clickAdded = async () => {
-        if (cartItems.data!.some((obj) => Number(obj.parentId) === Number(parentId))) {
-            let exId = cartItems.data!.find((obj) => Number(obj.parentId) === Number(parentId))
-            await deleteItem(exId!.id)
-            setIsAdded(false)
-        } else {
-            await addSneakers(obj)
-        }
-    };
-
-    const clickFavorite = async () => {
-        if (favoriteItems.data!.some((obj) => Number(obj.parentId) === Number(parentId))) {
-            let exId = favoriteItems.data!.find((obj) => Number(obj.parentId) === Number(parentId))
-            await deleteFavorite(exId!.id)
-            setIsFavorite(false)
-        } else {
-            await addFavorite(obj)
-            setIsFavorite(true)
-        }
-    };
+    const { onClickAdded, isAdded } = useClickAddHandler(parentId, obj, setAnError);
+    const { onClickFavorite, isFavorite } = useClickFavoriteHandler(parentId, obj, setAnError);
 
     return (
         <li className={style['product-list__item']}>
             <div className={style['product-card']}>
-                <button className={clsx(style['product-card__favorite'], 'btn-reset')} onClick={() => clickFavorite()}>
+                <button className={clsx(style['product-card__favorite'], 'btn-reset')} onClick={() => onClickFavorite()}>
                     <img src={isFavorite ? liked : unliked} />
                 </button>
                 <img src={img} alt="" width={133} height={112} />
@@ -86,7 +39,7 @@ const Card: FC<SneakersType> = ({ img, name, price, id, parentId }) => {
                         <div className={style['product-card__cost']}>Цена:</div>
                         <div className={style['product-card__price']}>{price} руб.</div>
                     </div>
-                    <button className={clsx(style['product-card__btn'], 'btn-reset')} onClick={() => clickAdded()}>
+                    <button className={clsx(style['product-card__btn'], 'btn-reset')} onClick={() => onClickAdded()}>
                         <img src={isAdded ? added : unadded} />
                     </button>
                 </div>

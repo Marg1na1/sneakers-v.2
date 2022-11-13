@@ -25,6 +25,7 @@
             height: 31px;
             border-radius: 8px;
             padding: 0;
+            user-select: none;
         }
         &__img{
             position: absolute;
@@ -60,6 +61,7 @@
         &__favorite{
             position: absolute;
             background-color: transparent;
+            user-select: none;
         }
         &__skeleton{
             display: flex;

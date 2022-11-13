@@ -1,39 +1,70 @@
-import React, { FC } from "react";
-import clsx from "clsx";
+import React, { FC, useState } from "react";
 import Card from "../../components/Card/Card";
 import Skeleton from "../../components/Card/Skeleton";
 import style from './Home.module.scss';
-import { useGetSneakersQuery } from "../../redux/sneakersAPI";
+import { useGetSearchedItemsQuery } from "../../redux/sneakersAPI";
+import HomeHeader from "../../components/HomeHeader/HomeHeader";
+import EmptyStatePage from "../../components/EmptyStatePage/EmptyStatePage";
+import ErrorModal from "../../components/ErrorModal/ErrorModal";
+import { ErrorResponseType } from "../../globalTypes";
 
-
-const loupe = './assets/img/loupe.svg';
+const stunnedFace = './assets/img/stunned.svg';
 
 const Home: FC = () => {
 
-    const { data = [], isLoading, } = useGetSneakersQuery();
+    const [searchValue, setSearchValue] = useState<string>('');
+    const [anError, setAnError] = useState<ErrorResponseType | { isError: boolean }>({ isError: false });
 
-    const sneakersSnip = data.map((obj, i) => (<Card key={i} {...obj} />));
+
+
+    const { data = [], isLoading, error } = useGetSearchedItemsQuery(searchValue);
+
+    const sneakersSnip = data.map((obj, i) => (<Card key={i} {...obj} setAnError={setAnError} />));
     const sneakersSkeleton = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
+
+    if (isLoading) {
+        return (
+            <ul className={style['product-list']}>
+                {
+                    sneakersSkeleton
+                }
+            </ul>
+        );
+    } else if (error) {
+        return (
+            <div className={style['product']}>
+                <HomeHeader setSearchValue={setSearchValue} searchValue={searchValue} />
+                <EmptyStatePage
+                    title={"Ошибка"}
+                    message={'Произошла ошибка при попытке получения данных'}
+                    imgUrl={stunnedFace} />
+            </div>
+        );
+    } else if (data.length === 0) {
+        return (
+            <div className={style['product']}>
+                <HomeHeader setSearchValue={setSearchValue} searchValue={searchValue} />
+                <ul className={style['product-list']}>
+                    <div>Пусто</div>
+                </ul>
+            </div>
+        );
+    }
 
     return (
         <div className={style['product']}>
-            <div className={style['product-headline']}>
-                <h1 className={style['product-title']}>Кроссовки</h1>
-                <form className={style['product-headline__form']}>
-                    <button className={clsx(style['product-headline__btn'], 'btn-reset')}>
-                        <img src={loupe} alt="" />
-                    </button>
-                    <input type="text" className={clsx(style['product-headline__input'], 'input-reset')} placeholder='Поиск...' />
-                </form>
-            </div>
+
+            {
+                anError.isError && <ErrorModal {...anError} />
+            }
+            <HomeHeader setSearchValue={setSearchValue} searchValue={searchValue} />
             <ul className={style['product-list']}>
                 {
-                    isLoading ? sneakersSkeleton : sneakersSnip
+                    sneakersSnip
                 }
             </ul>
         </div>
     );
 }
-
 
 export default Home;

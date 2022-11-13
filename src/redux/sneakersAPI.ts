@@ -1,7 +1,11 @@
-import { SneakersType, CartSneakersType, OrdersType} from '../globalTypes';
+import { SneakersType, CartSneakersType, OrdersType } from '../globalTypes';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import { url } from './apiKey.env';
+
+type test = {
+    value: string
+}
 
 export const sneakersApi = createApi({
     reducerPath: 'sneakersApi',
@@ -31,6 +35,13 @@ export const sneakersApi = createApi({
                 result
                     ? [...result.map(({ id }) => ({ type: 'OrderItems' as const, id })), 'OrderItems']
                     : ['OrderItems'],
+        }),
+        getSearchedItems: builder.query<SneakersType[], string>({
+            query: (value) => `cards/?search=${value}`,
+            providesTags: (result) =>
+                result
+                    ? [...result.map(({ id }) => ({ type: 'CartItems' as const, id })), 'CartItems']
+                    : ['CartItems'],
         }),
         addSneakers: builder.mutation({
             query: ({ id, ...data }) => ({
@@ -72,7 +83,7 @@ export const sneakersApi = createApi({
         }),
         deleteOrder: builder.mutation({
             query: (id) => ({
-                url: `orders/${id}`,
+                url: `orders${id}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ['OrderItems'],
@@ -90,5 +101,6 @@ export const {
     useDeleteFavoriteItemMutation,
     useAddOrderMutation,
     useGetOrdersQuery,
-    useDeleteOrderMutation
+    useDeleteOrderMutation,
+    useGetSearchedItemsQuery
 } = sneakersApi

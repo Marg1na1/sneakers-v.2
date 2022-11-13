@@ -9,7 +9,7 @@ type CartFooterType = {
     checkoutSneakers: () => void
 }
 
-const CartFooter: FC<CartFooterType> = ({ totalPrice, checkoutSneakers }) => {
+const CartFooter: FC<CartFooterType> = ({ totalPrice, checkoutSneakers }) => { 
     return (
         <div className={style['cart-footer']}>
             <ul className={style['cart-footer__list']}>

@@ -1,28 +1,5 @@
 .product{
     padding: 40px 60px;
-    &-headline{
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 30px;
-        &__form{
-            height: 45px;
-            border-radius: 10px;
-            border: 1px solid var(--light-gray-color);
-            max-width: 250px;
-        }
-        &__btn{
-            width: 43px;
-            height: 43px;
-            background-color: transparent;
-        }
-        &__input{
-            height: 43px;
-            max-width: 205px;
-            background-color: transparent;
-            padding: 0;
-            font-family: var(--main-font);
-        }
-    }
     &-title{
         color: black;
     }
@@ -30,5 +7,8 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 40px;
+    }
+    &-error{
+        overflow: hidden;
     }
 }

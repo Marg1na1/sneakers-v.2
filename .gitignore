@@ -4,8 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-test.json
 package-lock.json
+apiKey.env.ts
 
 # testing
 /coverage
