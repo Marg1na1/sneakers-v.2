@@ -3,10 +3,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import { url } from './apiKey.env';
 
-type test = {
-    value: string
-}
-
 export const sneakersApi = createApi({
     reducerPath: 'sneakersApi',
     tagTypes: ['CartItems', 'FavoriteItems', 'OrderItems'],
