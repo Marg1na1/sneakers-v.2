@@ -6,16 +6,16 @@ import CartItem from '../CartItem/CartItem';
 import style from './Cart.module.scss';
 import CartEmpty from './CartEmpty';
 import ErrorModal from '../ErrorModal/ErrorModal';
-import useSendOrder from '../../Hook/useSendOrder';
+import { useSendOrder } from '../../Hook/useSendOrder';
 
 type CartPropsType = {
-    toggleCart: () => boolean | void
-    totalPrice: number
+    toggleCart: () => boolean | void;
+    totalPrice: number;
 }
 
 const Cart: FC<CartPropsType> = ({ toggleCart, totalPrice }) => {
 
-    const [anError, setAnError] = useState({ isError: false })
+    const [anError, setAnError] = useState({ isError: false });
 
     const { data = [], error } = useGetCartItemsQuery();
 
@@ -55,8 +55,7 @@ const Cart: FC<CartPropsType> = ({ toggleCart, totalPrice }) => {
 
     return (
         <>
-            {//@ts-ignore
-                anError.isError && <ErrorModal {...anError} />}
+            {anError.isError && <ErrorModal {...anError} />}
             <div className={style['cart-shadow']}>
                 <div className={style.cart}>
                     <div className={style['cart-headline']}>
@@ -66,7 +65,7 @@ const Cart: FC<CartPropsType> = ({ toggleCart, totalPrice }) => {
                     <>
                         <ul className={style['cart-main']}>
                             {
-                                data?.map((obj, i) => (<CartItem key={i} {...obj} setAnError={setAnError} />))
+                                data.map((obj, i) => (<CartItem key={i} {...obj} setAnError={setAnError} />))
                             }
                         </ul>
                         <CartFooter totalPrice={totalPrice} checkoutSneakers={checkoutSneakers} />

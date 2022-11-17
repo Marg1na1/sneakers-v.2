@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import style from './EmptyStatePage.module.scss';
 import clsx from "clsx";
 
-const rightArrow = './../assets/img/right-arrow.svg'
+const rightArrow = './../assets/img/right-arrow.svg';
 
 type EmptyStatePage = {
     title: string;
@@ -12,6 +12,7 @@ type EmptyStatePage = {
 }
 
 const EmptyStatePage: FC<EmptyStatePage> = ({ title, message, imgUrl }) => {
+
     return (
         <div className={style['empty']}>
             <img className={style['empty__image']} src={imgUrl} />

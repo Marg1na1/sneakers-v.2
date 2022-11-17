@@ -1,42 +1,40 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import clsx from 'clsx';
 import { CartSneakersType } from '../../globalTypes';
 import { useDeleteSneakersMutation } from '../../redux/sneakersAPI';
 import style from './CartItem.module.scss';
 
-type cartItemTestProps = {
+type CartItemProps = {
     id: string;
     name: string;
     parentId: number;
     price: number;
     img: string;
-    setAnError: any;
+    setAnError: (x: any) => void;
 }
 
 
-const CartItem: FC<cartItemTestProps> = ({ id, name, parentId, price, img, setAnError }) => {
+const CartItem: FC<CartItemProps> = ({ id, name, parentId, price, img, setAnError }) => {
 
-    const [deleteItem, deleteItemStatuses] = useDeleteSneakersMutation(); 
+    const [deleteItem, deleteItemStatuses] = useDeleteSneakersMutation();
 
     const clickDelete = async (id: string) => {
         await deleteItem(id)
     }
 
-    if (deleteItemStatuses.isError) {
-        setAnError(deleteItemStatuses)
-    }
+    useEffect(() => {
+        if (deleteItemStatuses.isError) {
+            setAnError(deleteItemStatuses)
+        }
+    }, [deleteItemStatuses]);
 
     return (
         <li className={style['cart-item']} >
             <div className={style['cart-card']}>
-                <picture>
-                    <source />
-                    < source />
-                    <img src={img} alt="" width={70} height={70} />
-                </picture>
-                < div className={style['cart-card__main']} >
+                <img src={img} alt="" width={70} height={70} />
+                <div className={style['cart-card__main']} >
                     <p className={style['cart-card__name']}> {name} </p>
-                    < p className={style['cart-card__price']} > {price} руб.</p>
+                    <p className={style['cart-card__price']} > {price} руб.</p>
                 </div>
                 <button className={clsx(style['cart-card__btn'], 'btn-reset')} onClick={() => clickDelete(id)}></button>
             </div>

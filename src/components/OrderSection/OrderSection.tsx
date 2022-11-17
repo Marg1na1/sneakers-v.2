@@ -19,13 +19,13 @@ const OrderSection: FC<OrdersType> = (obj) => {
 
     useEffect(() => {
         setTotal(orderItemsArr.reduce((acc, obj) => acc + obj.props.price, 0))
-    }, [])
+    }, []);
 
     const [deleteOrderItem] = useDeleteOrderMutation();
 
     const deleteOrder = () => {
         deleteOrderItem(obj.id)
-    }
+    };
 
     return (
         <li className={style['orders-section']}>

@@ -1,6 +1,8 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import useGetTotalPrice from '../../Hook/useGetTotalPrice';
+import { useGetTotalPrice } from '../../Hook/useGetTotalPrice';
+import Burger from '../Burger/Burger';
+import BurgerContent from '../BurgerContent/BurgerContent';
 import Cart from '../Cart/Cart';
 import style from './../Header/Hedaer.module.scss';
 
@@ -12,15 +14,20 @@ const profile = './../assets/img/Union.svg';
 const Header: FC = () => {
 
     const [cartOpen, setCartOpen] = useState<boolean>(false);
+    const [burgerOpen, setBurgerOpen] = useState<boolean>(false);
 
-    const totalPrice = useGetTotalPrice(); 
+    const totalPrice = useGetTotalPrice();
 
     const toggleCart = () => {
         setCartOpen(!cartOpen)
+        setBurgerOpen(false)
     };
 
     useEffect(() => {
         if (cartOpen === true) {
+
+            document.body.style.overflowY = "hidden";
+
             const close = (e: KeyboardEvent) => {
                 if (e.key === 'Escape') {
                     setCartOpen(!cartOpen)
@@ -30,12 +37,17 @@ const Header: FC = () => {
 
             return () => window.removeEventListener('keydown', close)
         }
+
+        document.body.style.overflowY = "visible";
     });
 
     return (
         <header className={style.header}>
             {
                 cartOpen && <Cart toggleCart={toggleCart} totalPrice={totalPrice} />
+            }
+            {
+                burgerOpen && <BurgerContent toggleCart={toggleCart} setBurgerOpen={setBurgerOpen} />
             }
             <Link to="/">
                 <div className={style['header-left']}>
@@ -61,6 +73,7 @@ const Header: FC = () => {
                         <img src={profile} alt="" />
                     </li>
                 </Link>
+                <Burger burgerOpen={burgerOpen} setBurgerOpen={setBurgerOpen} />
             </ul>
         </header>
     );

@@ -5,11 +5,12 @@ import clsx from 'clsx';
 const arrow = './../assets/img/arrow.svg';
 
 type CartFooterType = {
-    totalPrice: number,
-    checkoutSneakers: () => void
+    totalPrice: number;
+    checkoutSneakers: () => void;
 }
 
-const CartFooter: FC<CartFooterType> = ({ totalPrice, checkoutSneakers }) => { 
+const CartFooter: FC<CartFooterType> = ({ totalPrice, checkoutSneakers }) => {
+
     return (
         <div className={style['cart-footer']}>
             <ul className={style['cart-footer__list']}>

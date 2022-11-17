@@ -1,12 +1,10 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import EmptyStatePage from '../../components/EmptyStatePage/EmptyStatePage';
-import ErrorModal from '../../components/ErrorModal/ErrorModal';
 import OrderSection from '../../components/OrderSection/OrderSection';
 import { useGetOrdersQuery } from '../../redux/sneakersAPI';
 import style from './Orders.module.scss';
 
 const stunnedFace = './assets/img/stunned.svg';
-
 
 const Orders: FC = () => {
 
@@ -31,15 +29,12 @@ const Orders: FC = () => {
     }
 
     return (
-        <div className={style['orders']}>
+        <div className={style['orders']}> 
             {
                 <>
                     <h1 className={style['orders-title']}>Заказы</h1>
                     <ul className={style['orders-list']}>
-                        {
-
-                            data!.map((obj, i) => <OrderSection key={i} {...obj} />)
-                        }
+                        {data.map((obj, i) => <OrderSection key={i} {...obj} />)}
                     </ul>
                 </>
             }

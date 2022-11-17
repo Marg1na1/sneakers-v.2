@@ -1,19 +1,20 @@
+import { ErrorResponseType } from './../globalTypes';
 import { useEffect, useState } from 'react';
 import { useAddFavoritesMutation, useDeleteFavoriteItemMutation, useGetFavoritesItemQuery } from "../redux/sneakersAPI";
 
-const useClickFavoriteHandler = (parentId: number, obj: any, setAnError: any) => {
+export const useClickFavoriteHandler = (parentId: number, obj: any, setAnError: (x: ErrorResponseType | any) => void) => {
 
     const [isFavorite, setIsFavorite] = useState(false);
 
-    const favoriteItems = useGetFavoritesItemQuery();
+    const { data = [], isLoading } = useGetFavoritesItemQuery();
 
     const [addFavorite, addFavoriteStatuses] = useAddFavoritesMutation();
 
     const [deleteFavorite, deleteFavoriteStatuses] = useDeleteFavoriteItemMutation();
 
     const onClickFavorite = async () => {
-        if (favoriteItems.data!.some((obj) => Number(obj.parentId) === Number(parentId))) {
-            let exId = favoriteItems.data!.find((obj) => Number(obj.parentId) === Number(parentId))
+        if (data.some((obj) => Number(obj.parentId) === Number(parentId))) {
+            let exId = data.find((obj) => Number(obj.parentId) === Number(parentId))
             await deleteFavorite(exId!.id)
         } else {
             await addFavorite(obj)
@@ -21,14 +22,14 @@ const useClickFavoriteHandler = (parentId: number, obj: any, setAnError: any) =>
     };
 
     useEffect(() => {
-        if (!favoriteItems.isLoading) {
-            if (favoriteItems.data!.some((obj) => Number(obj.parentId) === Number(parentId))) {
+        if (!isLoading) {
+            if (data.some((obj) => Number(obj.parentId) === Number(parentId))) {
                 setIsFavorite(true)
             } else {
                 setIsFavorite(false)
             }
         }
-    }, [favoriteItems.data]);
+    }, [data]);
 
     useEffect(() => {
         if (addFavoriteStatuses.isError) {
@@ -38,8 +39,5 @@ const useClickFavoriteHandler = (parentId: number, obj: any, setAnError: any) =>
         }
     }, [addFavoriteStatuses, deleteFavoriteStatuses])
 
-
     return { onClickFavorite, isFavorite }
 }
-
-export default useClickFavoriteHandler;

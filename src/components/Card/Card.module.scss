@@ -1,8 +1,51 @@
+@mixin tablet {
+    @media (max-width: (1100px)) {
+      @content;
+    }
+}
+@mixin small-tablet {
+    @media (max-width: (900px)) {
+      @content;
+    }
+}
+
+@mixin big-mobile {
+    @media (max-width: (685px)) {
+      @content;
+    }
+}
+@mixin mobile {
+    @media (max-width: (545px)) {
+      @content;
+    }
+}
+
 .product{
     &-list{
         &__item{
             display: flex;
             justify-content: center;
+            @include tablet {
+                &:nth-child(3n){
+                    justify-content: left;
+                }
+                &:nth-child(3n + 1){
+                    justify-content: right;
+                }
+            }
+            @include small-tablet {
+                &:nth-child(2n){
+                    justify-content: left;
+                }
+                &:nth-child(2n + 1){
+                    justify-content: right;
+                }
+            }
+            @include mobile {
+                &:nth-child(1n){
+                    justify-content: center;
+                }
+            }
         }
     }
     &-card{

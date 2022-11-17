@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useGetCartItemsQuery } from '../redux/sneakersAPI';
 
-const useGetTotalPrice = () => {
+export const useGetTotalPrice = () => {
 
     const [totalPrice, setTotalPrtice] = useState<number>(0);
 
@@ -14,5 +14,4 @@ const useGetTotalPrice = () => {
     return totalPrice 
 }
 
-export default useGetTotalPrice;
 

@@ -1,7 +1,8 @@
+import { ErrorResponseType } from './../globalTypes';
 import { useState, useEffect } from 'react';
 import { useAddOrderMutation, useDeleteSneakersMutation, useGetCartItemsQuery } from '../redux/sneakersAPI';
 
-const useSendOrder = (setAnError: any) => {
+export const useSendOrder = (setAnError: (x: ErrorResponseType | any) => void) => {
 
     const { data = [] } = useGetCartItemsQuery();
 
@@ -35,9 +36,7 @@ const useSendOrder = (setAnError: any) => {
         if (!addOrdersStatuses.isError && clickOrder) {
             cleanCart()
         }
-    }, [clickOrder])
+    }, [clickOrder]);
 
     return { checkoutSneakers }
 }
-
-export default useSendOrder;

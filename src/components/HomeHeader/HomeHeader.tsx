@@ -11,10 +11,6 @@ type HomeHeaderProps = {
 
 const HomeHeader: FC<HomeHeaderProps> = ({ setSearchValue, searchValue }) => {
 
-    const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(e.target.value)
-    }
-
     return (
         <div className={style['product-headline']}>
             <h1 className={style['product-title']}>Все кроссовки</h1>
@@ -24,7 +20,7 @@ const HomeHeader: FC<HomeHeaderProps> = ({ setSearchValue, searchValue }) => {
                 </button>
                 <input type="text" className={clsx(style['product-headline__input'], 'input-reset')}
                     placeholder='Поиск...'
-                    onChange={onChangeInput}
+                    onChange={e => setSearchValue(e.target.value)}
                     value={searchValue} />
             </form>
         </div>

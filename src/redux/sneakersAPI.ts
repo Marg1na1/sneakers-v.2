@@ -1,16 +1,13 @@
 import { SneakersType, CartSneakersType, OrdersType } from '../globalTypes';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { url } from './apiKey.env';
-
-type test = {
-    value: string
-}
 
 export const sneakersApi = createApi({
     reducerPath: 'sneakersApi',
     tagTypes: ['CartItems', 'FavoriteItems', 'OrderItems'],
     baseQuery: fetchBaseQuery({ baseUrl: url }),
+    refetchOnFocus: true,
     endpoints: (builder) => ({
         getSneakers: builder.query<SneakersType[], void>({
             query: () => 'cards',
@@ -83,7 +80,7 @@ export const sneakersApi = createApi({
         }),
         deleteOrder: builder.mutation({
             query: (id) => ({
-                url: `orders${id}`,
+                url: `orders/${id}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ['OrderItems'],

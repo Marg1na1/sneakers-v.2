@@ -12,7 +12,7 @@ const stunnedFace = './assets/img/stunned.svg';
 const Favorites: FC = () => {
 
     const { data = [], isLoading, error } = useGetFavoritesItemQuery();
-    const [anError, setAnError] = useState({ isError: false })
+    const [anError, setAnError] = useState({ isError: false });
 
     const favoritesSnip = data.map((obj, i) => (<Card key={i}  {...obj} setAnError={setAnError} />));
     const sneakersSkeleton = [...new Array(4)].map((_, index) => <Skeleton key={index} />);

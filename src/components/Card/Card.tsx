@@ -1,16 +1,15 @@
-import clsx from "clsx";
 import React, { FC } from "react";
-import { SneakersType, ErrorResponseType } from "../../globalTypes";
+import clsx from "clsx";
 import style from './Card.module.scss';
-import useClickAddHandler from "../../Hook/useClickAddHandler";
-import useClickFavoriteHandler from "../../Hook/useClickFavoriteHandler";
+import { useClickAddHandler } from "../../Hook/useClickAddHandler";
+import { useClickFavoriteHandler } from "../../Hook/useClickFavoriteHandler";
 
 const added = './../assets/img/plus-chaked.svg';
 const unadded = './../assets/img/unactive-plus.svg';
 const liked = './../assets/img/liked.svg';
 const unliked = './../assets/img/unliked.svg';
 
-type test = {
+type CardPropsType = {
     id: number;
     name: string;
     price: number;
@@ -19,7 +18,7 @@ type test = {
     setAnError: (x: any) => void;
 }
 
-const Card: FC<test> = ({ img, name, price, id, parentId, setAnError }) => {
+const Card: FC<CardPropsType> = ({ img, name, price, id, parentId, setAnError }) => {
 
     const obj = { img, name, price, id, parentId };
 
