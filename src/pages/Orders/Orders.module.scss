@@ -1,13 +1,29 @@
+@mixin big-mobile {
+    @media (max-width: (685px)) {
+      @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: (545px)) {
+      @content;
+    }
+}
+
 .orders{
     padding: 40px 60px;
     min-height: 75vh;
+    @include mobile {
+        padding: 40px 20px;  
+    }
     &-title{
         margin-bottom: 80px;
+        @include big-mobile {
+            margin-bottom: 40px;
+        }
     }
     &-list{
-        // display: grid;
-        // grid-template-columns: repeat(4, 1fr);
-        // gap: 40px;
+        display: flex;
         flex-direction: column;
     }
 }

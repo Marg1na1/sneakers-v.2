@@ -1,3 +1,9 @@
+@mixin s-mobile {
+    @media (max-width: (365px)) {
+      @content;
+    }
+}
+
 .cart{
     position: absolute;
     width: 385px;
@@ -8,8 +14,11 @@
     top: 0;
     bottom: 0;
     padding: 50px 30px 30px 30px;
-    display: flex;
+    display: flex; 
     flex-direction: column;
+    @include s-mobile {
+        width: 300px;
+    }
     &-headline{
         display: flex;
         justify-content: space-between;
@@ -71,6 +80,9 @@
             border-radius: 20px;
             &:not(:first-child){
                 margin-top: 20px;
+            }
+            @include s-mobile {
+                padding: 15px 5px;
             }
         }
         &-card{

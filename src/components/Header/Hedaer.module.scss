@@ -4,12 +4,21 @@
     }
 }
 
+@mixin s-mobile {
+    @media (max-width: (365px)) {
+      @content;
+    }
+}
+
 .header{
     display: flex;
     justify-content: space-between;
     font-weight: 700;
     padding: 45px;
     border-bottom: 1px solid var(--light-gray-color);
+    @include big-mobile {
+        padding: 45px 25px;
+    }
     &-left{
         display: flex;
         img{
@@ -25,6 +34,9 @@
         font-size: 20px;
         line-height: 24px;
         text-transform: uppercase;
+        @include s-mobile {
+            font-size: 20px;
+        }
     }
     &-tagline{
         font-weight: 400;
@@ -38,6 +50,7 @@
     &-right{
         display: flex;
         align-items: center;
+        margin-left: 25px;
         &__item{
             display: flex;
             align-items: center;

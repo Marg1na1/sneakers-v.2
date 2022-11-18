@@ -1,3 +1,9 @@
+@mixin s-mobile {
+    @media (max-width: (365px)) {
+      @content;
+    }
+}
+
 .burger{
     &-container{
         position: absolute;
@@ -10,9 +16,9 @@
     }
     &-menu{
         position: absolute;
-        width: 385px;
+        width: 355px;
         background-color: var(--light-color);
-        box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+        box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1); 
         right: 0;
         height: 100vh;
         top: 0;
@@ -20,6 +26,9 @@
         padding: 50px 30px 30px 30px;
         display: flex;
         flex-direction: column;
+        @include s-mobile {
+            width: 300px;
+        }
         &__headline{
             display: flex;
             background-color: var(--light-color);

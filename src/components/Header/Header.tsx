@@ -39,7 +39,14 @@ const Header: FC = () => {
         }
 
         document.body.style.overflowY = "visible";
-    });
+    }, [cartOpen]);
+
+    if (burgerOpen === true) {
+        document.body.style.overflowY = "hidden";
+    } else {
+        document.body.style.overflowY = "visible";
+    }
+
 
     return (
         <header className={style.header}>

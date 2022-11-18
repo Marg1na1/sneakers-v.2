@@ -1,6 +1,24 @@
+@mixin big-mobile {
+    @media (max-width: (685px)) {
+      @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: (545px)) {
+      @content;
+    }
+}
+
+@mixin s-mobile {
+    @media (max-width: (365px)) {
+      @content;
+    }
+}
+
 .orders-section{
     background-color: var(--light-color);
-    border: 2px solid var(--light-gray-color);
+    border: 2px solid var(--light-gray-color); 
     border-radius: 23px;
     padding: 25px;
     &:not(:last-child){
@@ -16,13 +34,20 @@
         font-size: 22px;
         line-height: 19px;
         color: var(--black-color);
-        
-        span{
+        display: flex;
+        @include big-mobile {
+            flex-direction: column;
+        }
+        p{
         font-weight: 400;
         font-size: 14px;
         line-height: 19px;
         color: var(--black-color);
         margin-left: 15px; 
+        @include big-mobile {
+            margin-left: 0px; 
+            margin-top: 15px;
+        }
         }
     }
     &__btn{
@@ -31,6 +56,10 @@
         border-radius: 8px;
         border: 1px solid var(--gray-color);
         position: relative;
+        @include mobile {
+            width: 32px;
+            height: 32px;
+        }
         &::before{
             content: '';
             width: 20px;
@@ -41,6 +70,10 @@
             top: calc(50% - 1px);
             right: calc(50% - 11px);
             border-radius: 50px;
+            @include mobile {
+                width: 15px;
+                right: calc(50% - 8px);
+            }
         }
         &::after{
             content: '';
@@ -52,6 +85,10 @@
             top: calc(50% - 1px);
             right: calc(50% - 11px);
             border-radius: 50px;
+            @include mobile {
+                width: 15px;
+                right: calc(50% - 8px);
+            }
         }
     }
     &-list{
@@ -60,10 +97,11 @@
     &-footer{
         display: flex;
         justify-content: right;
+        @include s-mobile {
+            justify-content: center;
+        }
     }
     &__total{
-        // display: flex;
-        // align-items: center;
         font-weight: 500;
         font-size: 20px;
         line-height: 19px;
@@ -75,5 +113,6 @@
             color: var(--black-color);
             margin-left: 10px;
         }
+        
     }
 }

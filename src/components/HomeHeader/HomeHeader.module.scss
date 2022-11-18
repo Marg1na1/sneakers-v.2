@@ -2,7 +2,19 @@
     @media (max-width: (685px)) {
       @content;
     }
-  }
+}
+
+@mixin mobile {
+    @media (max-width: (545px)) {
+      @content;
+    }
+}
+
+@mixin s-mobile {
+    @media (max-width: (365px)) {
+      @content;
+    }
+}
   
 
 .product{
@@ -34,6 +46,14 @@
             background-color: transparent;
             padding: 0;
             font-family: var(--main-font);
+        }
+        h1{
+            @include mobile {
+                font-size: 30px;
+            }
+            @include s-mobile {
+                font-size: 27px;
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import style from './OrderSection.module.scss';
 import OrderItem from './../OrderItem/OrderItem';
 import { useDeleteOrderMutation } from '../../redux/sneakersAPI';
-import { CartSneakersType, OrdersType } from '../../globalTypes';
+import { OrdersType } from '../../globalTypes';
 
 const OrderSection: FC<OrdersType> = (obj) => {
 
@@ -27,10 +27,12 @@ const OrderSection: FC<OrdersType> = (obj) => {
         deleteOrderItem(obj.id)
     };
 
+    const orderDate = new Date(obj.createdAt).toString().split(' ').slice(3, 5).reverse().join(' ');
+
     return (
         <li className={style['orders-section']}>
             <div className={style['orders-section-header']}>
-                <div className={style['orders-section__createTime']}>Дата заказа:<span>{obj.createdAt}</span></div>
+                <div className={style['orders-section__createTime']}>Дата заказа:<p>{orderDate}</p></div>
                 <button className={clsx(style['orders-section__btn'], 'btn-reset')} onClick={() => deleteOrder()}></button>
             </div>
             <ul className={style['orders-section-list']}>

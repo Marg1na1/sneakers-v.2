@@ -1,3 +1,9 @@
+@mixin s-mobile {
+    @media (max-width: (365px)) {
+      @content;
+    }
+}
+
 .cart{
     &-footer{
         display: block;
@@ -39,6 +45,9 @@
                 position: relative;
                 left: 50px;
                 transition: .3s;
+                @include s-mobile {
+                    left: 20px;
+                }
             }
             &:hover{
                 background: lighten(#9DD458, 5%);
