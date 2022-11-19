@@ -22,14 +22,6 @@ const Home: FC = () => {
         refetchOnFocus: true
     });
 
-    useEffect(() => {
-        if (anError.isError) {
-            document.body.style.overflowY = "hidden";
-        } else {
-            document.body.style.overflowY = "visible";
-        }
-    })
-
     const sneakersSnip = data.map((obj, i) => (<Card key={i} {...obj} setAnError={setAnError} />));
     const sneakersSkeleton = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
 

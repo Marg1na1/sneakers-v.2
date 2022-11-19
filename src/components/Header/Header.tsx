@@ -36,15 +36,19 @@ const Header: FC = () => {
         }
     });
 
-    if (burgerOpen === true) {
-        console.log(burgerOpen)
-        document.body.style.overflowY = "hidden";
-    } else if (cartOpen === true) {
-        document.body.style.overflowY = "hidden";
-    } else {
-        document.body.style.overflowY = "visible";
-    }
+    useEffect(() => {
+        if (burgerOpen === true || cartOpen === true) {
+            window.scrollTo(0, 0);
+            document.body.style.overflowY = "hidden";
+        } else if (!burgerOpen === true && !cartOpen === true) {
+            document.body.style.overflowY = "visible";
+        }
+    }, [burgerOpen, cartOpen])
 
+    if (cartOpen === true) {
+        window.scrollTo(0, 0);
+        document.body.style.overflowY = "hidden";
+    }
     return (
         <header className={style.header}>
             {

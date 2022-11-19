@@ -11,6 +11,13 @@ const ErrorModal: FC<ErrorResponseType> = (anError) => {
 
     let notOrder = 'товара' + pretext + where
 
+    if (anError.isError) {
+        window.scrollTo(0, 0)
+        document.body.style.overflowY = "hidden";
+    } else {
+        document.body.style.overflowY = "visible";
+    }
+
     return (
         <div className={style['modal-blackout']}>
             <div className={style['modal']}>
