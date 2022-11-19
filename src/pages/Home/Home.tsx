@@ -21,13 +21,14 @@ const Home: FC = () => {
     const { data = [], isLoading, error } = useGetSearchedItemsQuery(debouncedValue, {
         refetchOnFocus: true
     });
-    // useEffect(() => {
-    //     if (anError.isError) {
-    //         document.body.style.overflowY = "hidden";
-    //     } else {
-    //         document.body.style.overflowY = "visible";
-    //     }
-    // })
+
+    useEffect(() => {
+        if (anError.isError) {
+            document.body.style.overflowY = "hidden";
+        } else {
+            document.body.style.overflowY = "visible";
+        }
+    })
 
     const sneakersSnip = data.map((obj, i) => (<Card key={i} {...obj} setAnError={setAnError} />));
     const sneakersSkeleton = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
@@ -51,7 +52,6 @@ const Home: FC = () => {
             </div>
         );
     } else if (data.length === 0) {
-
         return (
             <div className={style['product']}>
                 <HomeHeader setSearchValue={setSearchValue} searchValue={searchValue} />

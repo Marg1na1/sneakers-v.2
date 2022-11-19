@@ -24,7 +24,7 @@
 
 @mixin mobile {
     @media (max-width: (545px)) {
-      @content;
+      @content; 
     }
 }
 

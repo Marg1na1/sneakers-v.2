@@ -25,9 +25,6 @@ const Header: FC = () => {
 
     useEffect(() => {
         if (cartOpen === true) {
-
-            document.body.style.overflowY = "hidden";
-
             const close = (e: KeyboardEvent) => {
                 if (e.key === 'Escape') {
                     setCartOpen(!cartOpen)
@@ -37,16 +34,16 @@ const Header: FC = () => {
 
             return () => window.removeEventListener('keydown', close)
         }
-
-        document.body.style.overflowY = "visible";
-    }, [cartOpen]);
+    });
 
     if (burgerOpen === true) {
+        console.log(burgerOpen)
+        document.body.style.overflowY = "hidden";
+    } else if (cartOpen === true) {
         document.body.style.overflowY = "hidden";
     } else {
         document.body.style.overflowY = "visible";
     }
-
 
     return (
         <header className={style.header}>

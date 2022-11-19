@@ -1,3 +1,8 @@
+@mixin mobile {
+    @media (max-width: (545px)) {
+      @content; 
+    }
+}
 @mixin s-mobile {
     @media (max-width: (365px)) {
       @content;
@@ -45,7 +50,7 @@
                 position: relative;
                 left: 50px;
                 transition: .3s;
-                @include s-mobile {
+                @include mobile {
                     left: 20px;
                 }
             }

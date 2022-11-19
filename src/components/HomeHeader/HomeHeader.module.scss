@@ -31,14 +31,26 @@
             border-radius: 10px;
             border: 1px solid var(--light-gray-color);
             max-width: 250px;
+            input{
+                border-radius: 10px;
+            }
             @include big-mobile {
                 margin-top: 35px;
+            }
+            @include s-mobile {
+                max-width: 200px;
+            }
+            input{
+                @include s-mobile {
+                    max-width: 137px;
+                } 
             }
         }
         &__btn{
             width: 43px;
             height: 43px;
             background-color: transparent;
+            border-radius: 10px;
         }
         &__input{
             height: 43px;
