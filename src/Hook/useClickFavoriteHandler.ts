@@ -1,8 +1,8 @@
-import { ErrorResponseType } from '../globalTypes';
+import { ErrorResponseModel} from '../models';
 import { useEffect, useState } from 'react';
-import { useAddFavoritesMutation, useDeleteFavoriteItemMutation, useGetFavoritesItemQuery } from "../redux/sneakersAPI";
+import { useAddFavoritesMutation, useDeleteFavoriteItemMutation, useGetFavoritesItemQuery } from '../redux/sneakersAPI';
 
-export const useClickFavoriteHandler = (parentId: number, obj: any, setAnError: (x: ErrorResponseType | any) => void) => {
+export const useClickFavoriteHandler = (parentId: number, obj: any, setAnError: (x: ErrorResponseModel | any) => void) => {
 
     const [isFavorite, setIsFavorite] = useState(false);
 

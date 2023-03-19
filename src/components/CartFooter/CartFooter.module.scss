@@ -43,7 +43,7 @@
             justify-content: center;
             transition: .3s;
 
-            img {
+            svg {
                 position: relative;
                 left: 50px;
                 transition: .3s;
@@ -56,7 +56,7 @@
             &:hover {
                 background: lighten(#9DD458, 5%);
 
-                img {
+                svg {
                     transform: translateX(10px);
                 }
             }

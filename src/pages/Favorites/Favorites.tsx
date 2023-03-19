@@ -1,10 +1,9 @@
-import React, { FC, useEffect, useState } from "react";
-import Card from "../../components/Card/Card";
-import Skeleton from "../../components/Card/Skeleton";
-import EmptyStatePage from "../../components/EmptyStatePage/EmptyStatePage";
-import ErrorModal from "../../components/ErrorModal/ErrorModal";
-import { useGetFavoritesItemQuery } from "../../redux/sneakersAPI";
-
+import { FC, useState } from 'react';
+import Card from '../../components/Card/Card';
+import Skeleton from '../../components/Card/Skeleton';
+import EmptyStatePage from '../EmptyStatePage/EmptyStatePage';
+import ErrorModal from '../../components/ErrorModal/ErrorModal';
+import { useGetFavoritesItemQuery } from '../../redux/sneakersAPI';
 import style from './Favorites.module.scss';
 
 const stunnedFace = './assets/img/stunned.svg';

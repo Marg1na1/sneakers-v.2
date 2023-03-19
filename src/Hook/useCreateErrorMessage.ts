@@ -1,6 +1,6 @@
-import { ErrorResponseType } from '../globalTypes';
+import { ErrorResponseModel } from '../models';
 
-export const useCreateErrorMessage = (anError: ErrorResponseType) => {
+export const useCreateErrorMessage = (anError: ErrorResponseModel) => {
 
     let todo = '';
     let pretext = '';

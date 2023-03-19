@@ -1,27 +1,27 @@
-import React, { FC, useState } from 'react';
-import clsx from 'clsx';
+import { FC, useState } from 'react';
 import { useGetCartItemsQuery } from '../../redux/sneakersAPI';
 import CartFooter from '../CartFooter/CartFooter';
 import CartItem from '../CartItem/CartItem';
-import style from './Cart.module.scss';
+import { useSendOrder } from '../../hook/useSendOrder';
 import CartEmpty from './CartEmpty';
 import ErrorModal from '../ErrorModal/ErrorModal';
-import { useSendOrder } from '../../hook/useSendOrder';
+import clsx from 'clsx';
+import style from './Cart.module.scss';
 
-type CartPropsType = {
-    toggleCart: () => boolean | void;
+type Props = {
+    toggleCart: () => void;
     totalPrice: number;
 }
 
-const Cart: FC<CartPropsType> = ({ toggleCart, totalPrice }) => {
+const Cart: FC<Props> = ({ toggleCart, totalPrice }) => {
 
     const [anError, setAnError] = useState({ isError: false });
 
-    const { data = [], error } = useGetCartItemsQuery();
+    const { data = [], isError, isSuccess } = useGetCartItemsQuery();
 
     const { checkoutSneakers } = useSendOrder(setAnError);
 
-    if (error) {
+    if (isError) {
         return (
             <div className={style['cart-shadow']}>
                 <div className={style.cart}>

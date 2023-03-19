@@ -1,4 +1,4 @@
-import { SneakersType, CartSneakersType, OrdersType } from '../globalTypes';
+import { SneakersModel, CartSneakersModel, OrdersModel} from '../models';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { url } from './apiKey.env';
@@ -9,31 +9,31 @@ export const sneakersApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: url }),
     refetchOnFocus: true,
     endpoints: (builder) => ({
-        getSneakers: builder.query<SneakersType[], void>({
+        getSneakers: builder.query<SneakersModel[], void>({
             query: () => 'cards',
         }),
-        getCartItems: builder.query<CartSneakersType[], void>({
+        getCartItems: builder.query<CartSneakersModel[], void>({
             query: () => 'cartItems',
             providesTags: (result) =>
                 result
                     ? [...result.map(({ id }) => ({ type: 'CartItems' as const, id })), 'CartItems']
                     : ['CartItems'],
         }),
-        getFavoritesItem: builder.query<SneakersType[], void>({
+        getFavoritesItem: builder.query<SneakersModel[], void>({
             query: () => 'favorites',
             providesTags: (result) =>
                 result
                     ? [...result.map(({ id }) => ({ type: 'FavoriteItems' as const, id })), 'FavoriteItems']
                     : ['FavoriteItems'],
         }),
-        getOrders: builder.query<OrdersType[], void>({
+        getOrders: builder.query<OrdersModel[], void>({
             query: () => 'orders',
             providesTags: (result) =>
                 result
                     ? [...result.map(({ id }) => ({ type: 'OrderItems' as const, id })), 'OrderItems']
                     : ['OrderItems'],
         }),
-        getSearchedItems: builder.query<SneakersType[], string>({
+        getSearchedItems: builder.query<SneakersModel[], string>({
             query: (value) => `cards/?search=${value}`,
             providesTags: (result) =>
                 result

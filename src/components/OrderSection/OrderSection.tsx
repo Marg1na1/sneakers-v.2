@@ -1,11 +1,11 @@
-import React, { FC, useEffect, useState } from 'react';
-import clsx from 'clsx';
-import style from './OrderSection.module.scss';
+import { FC, useEffect, useState } from 'react';
 import OrderItem from './../OrderItem/OrderItem';
 import { useDeleteOrderMutation } from '../../redux/sneakersAPI';
-import { OrdersType } from '../../globalTypes';
+import { OrdersModel } from '../../models';
+import clsx from 'clsx';
+import style from './OrderSection.module.scss';
 
-const OrderSection: FC<OrdersType> = (obj) => {
+const OrderSection: FC<OrdersModel> = (obj) => {
 
     const orderItemsArr: any[] = [];
 
@@ -33,12 +33,10 @@ const OrderSection: FC<OrdersType> = (obj) => {
         <li className={style['orders-section']}>
             <div className={style['orders-section-header']}>
                 <div className={style['orders-section__createTime']}>Дата заказа:<p>{orderDate}</p></div>
-                <button className={clsx(style['orders-section__btn'], 'btn-reset')} onClick={() => deleteOrder()}></button>
+                <button className={clsx(style['orders-section__btn'], 'btn-reset')} onClick={deleteOrder}></button>
             </div>
             <ul className={style['orders-section-list']}>
-                {
-                    orderItemsArr
-                }
+                {orderItemsArr}
             </ul>
             <div className={style['orders-section-footer']}>
                 <p className={style['orders-section__total']}>Оплчено:<span>{total} руб.</span></p>

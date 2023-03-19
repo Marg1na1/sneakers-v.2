@@ -49,17 +49,18 @@
         transition: 0.3s;
         margin-top: 40px;
 
-        img {
+        svg {
             margin-right: 12px;
             transition: 0.3s;
             position: relative;
+            transform: rotate(180deg);
         }
 
         &:hover {
             background: lighten(#9DD458, 5%);
 
-            img {
-                transform: translateX(-10px);
+            svg {
+                transform: translateX(-10px) rotate(180deg);
             }
         }
     }

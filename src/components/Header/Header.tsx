@@ -1,15 +1,14 @@
-import React, { FC, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { FC, useState, useEffect } from 'react';
 import { useGetTotalPrice } from '../../hook/useGetTotalPrice';
+import { CartIcon } from '../../icons/CartIcon';
+import { FavoriteIcon } from '../../icons/FavoriteIcon';
+import { Logotype } from '../../icons/Logotype';
+import { OrdersIcon } from '../../icons/OrdersIcon';
 import Burger from '../Burger/Burger';
 import BurgerContent from '../BurgerContent/BurgerContent';
 import Cart from '../Cart/Cart';
+import { Link } from 'react-router-dom';
 import style from './../Header/Hedaer.module.scss';
-
-const logo = './../assets/img/image 4.svg';
-const cart = './../assets/img/Group.svg';
-const heart = './../assets/img/heart.svg';
-const profile = './../assets/img/Union.svg';
 
 const Header: FC = () => {
 
@@ -18,10 +17,13 @@ const Header: FC = () => {
 
     const totalPrice = useGetTotalPrice();
 
-    const toggleCart = () => {
-        setCartOpen(!cartOpen)
+    const onClickCartInBurger = () => {
+        setCartOpen(true)
         setBurgerOpen(false)
     };
+
+    const toggleCart = () => setCartOpen(!cartOpen)
+    const toggleBurger = () => setBurgerOpen(!burgerOpen)
 
     useEffect(() => {
         if (cartOpen === true) {
@@ -37,29 +39,21 @@ const Header: FC = () => {
     });
 
     useEffect(() => {
-        if (burgerOpen === true || cartOpen === true) {
+        if (burgerOpen || cartOpen) {
             window.scrollTo(0, 0);
-            document.body.style.overflowY = "hidden";
-        } else if (!burgerOpen === true && !cartOpen === true) {
-            document.body.style.overflowY = "visible";
+            document.body.style.overflowY = 'hidden';
+        } else if (!burgerOpen && !cartOpen) {
+            document.body.style.overflowY = 'visible';
         }
     }, [burgerOpen, cartOpen])
 
-    if (cartOpen === true) {
-        window.scrollTo(0, 0);
-        document.body.style.overflowY = "hidden";
-    }
     return (
         <header className={style.header}>
-            {
-                cartOpen && <Cart toggleCart={toggleCart} totalPrice={totalPrice} />
-            }
-            {
-                burgerOpen && <BurgerContent toggleCart={toggleCart} setBurgerOpen={setBurgerOpen} />
-            }
-            <Link to="/">
+            {cartOpen && <Cart toggleCart={toggleCart} totalPrice={totalPrice} />}
+            {burgerOpen && <BurgerContent onClickCartInBurger={onClickCartInBurger} toggleBurger={toggleBurger} />}
+            <Link to='/'>
                 <div className={style['header-left']}>
-                    <img src={logo} height='40px' width='40px' />
+                    <Logotype />
                     <div >
                         <h3 className={style['header-title']}>REACT SNEAKERS</h3>
                         <p className={style['header-tagline']}>Магазин лучших кроссовок</p>
@@ -68,18 +62,14 @@ const Header: FC = () => {
             </Link>
             <ul className={style['header-right']}>
                 <li className={style['header-right__item']} onClick={toggleCart}>
-                    <img src={cart} alt="" />
+                    <CartIcon />
                     <span className={style['header-right__price']}>{totalPrice} руб.</span>
                 </li>
-                <Link to="/favorites" className={style['header-right__item']}>
-                    <li >
-                        <img src={heart} alt="" />
-                    </li>
+                <Link to='/favorites' className={style['header-right__item']}>
+                    <li><FavoriteIcon /></li>
                 </Link>
-                <Link to="/orders" className={style['header-right__item']}>
-                    <li>
-                        <img src={profile} alt="" />
-                    </li>
+                <Link to='/orders' className={style['header-right__item']}>
+                    <li> <OrdersIcon /></li>
                 </Link>
                 <Burger burgerOpen={burgerOpen} setBurgerOpen={setBurgerOpen} />
             </ul>

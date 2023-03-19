@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import EmptyStatePage from '../../components/EmptyStatePage/EmptyStatePage';
+import { FC } from 'react';
+import EmptyStatePage from '../EmptyStatePage/EmptyStatePage';
 import OrderSection from '../../components/OrderSection/OrderSection';
 import { useGetOrdersQuery } from '../../redux/sneakersAPI';
 import style from './Orders.module.scss';
@@ -29,15 +29,11 @@ const Orders: FC = () => {
     }
 
     return (
-        <div className={style['orders']}> 
-            {
-                <>
-                    <h1 className={style['orders-title']}>Заказы</h1>
-                    <ul className={style['orders-list']}>
-                        {data.map((obj, i) => <OrderSection key={i} {...obj} />)}
-                    </ul>
-                </>
-            }
+        <div className={style['orders']}>
+            <h1 className={style['orders-title']}>Заказы</h1>
+            <ul className={style['orders-list']}>
+                {data.map(obj => <OrderSection key={obj.id} {...obj} />)}
+            </ul>
         </div>
     );
 }

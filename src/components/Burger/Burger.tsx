@@ -1,18 +1,16 @@
+import { FC } from 'react';
 import clsx from 'clsx';
-import React, { FC } from 'react';
 import style from './Burger.module.scss';
 
-type BurgerProps = {
+type Props = {
     burgerOpen: boolean;
-    setBurgerOpen: (x: boolean) => void
+    setBurgerOpen: (x: boolean) => void;
 }
 
-const Burger: FC<BurgerProps> = ({ burgerOpen, setBurgerOpen }) => {
+const Burger: FC<Props> = ({ burgerOpen, setBurgerOpen }) => {
     return (
-        <button className={clsx(style[burgerOpen ? 'burger--active' : ''], 'btn-reset', style['burger'])}
+        <button className={clsx('btn-reset', style['burger'])}
             onClick={() => setBurgerOpen(!burgerOpen)}>
-            <span className={style['burger-line']}></span>
-            <span className={style['burger-line']}></span>
             <span className={style['burger-line']}></span>
         </button>
     );

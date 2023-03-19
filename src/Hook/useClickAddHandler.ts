@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { ErrorResponseType, SneakersType } from '../globalTypes';
-import { useAddSneakersMutation, useDeleteSneakersMutation, useGetCartItemsQuery } from "../redux/sneakersAPI";
+import { ErrorResponseModel, SneakersModel } from '../models';
+import { useAddSneakersMutation, useDeleteSneakersMutation, useGetCartItemsQuery } from '../redux/sneakersAPI';
 
-export const useClickAddHandler = (parentId: number, obj: SneakersType, setAnError: (x: ErrorResponseType | any) => void) => {
+export const useClickAddHandler = (parentId: number, obj: SneakersModel, setAnError: (x: ErrorResponseModel | any) => void) => {
 
     const [isAdded, setIsAdded] = useState(false);
 

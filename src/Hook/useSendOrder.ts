@@ -1,8 +1,8 @@
-import { ErrorResponseType } from '../globalTypes';
+import { ErrorResponseModel } from '../models';
 import { useState, useEffect } from 'react';
 import { useAddOrderMutation, useDeleteSneakersMutation, useGetCartItemsQuery } from '../redux/sneakersAPI';
 
-export const useSendOrder = (setAnError: (x: ErrorResponseType | any) => void) => {
+export const useSendOrder = (setAnError: (x: ErrorResponseModel | any) => void) => {
 
     const { data = [] } = useGetCartItemsQuery();
 

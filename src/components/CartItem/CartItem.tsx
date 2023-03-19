@@ -1,10 +1,9 @@
-import React, { FC, useEffect } from 'react';
-import clsx from 'clsx';
-import { CartSneakersType } from '../../globalTypes';
+import { FC, useEffect } from 'react';
 import { useDeleteSneakersMutation } from '../../redux/sneakersAPI';
+import clsx from 'clsx';
 import style from './CartItem.module.scss';
 
-type CartItemProps = {
+type Props = {
     id: string;
     name: string;
     parentId: number;
@@ -13,8 +12,7 @@ type CartItemProps = {
     setAnError: (x: any) => void;
 }
 
-
-const CartItem: FC<CartItemProps> = ({ id, name, parentId, price, img, setAnError }) => {
+const CartItem: FC<Props> = ({ id, name, price, img, setAnError }) => {
 
     const [deleteItem, deleteItemStatuses] = useDeleteSneakersMutation();
 
@@ -31,7 +29,7 @@ const CartItem: FC<CartItemProps> = ({ id, name, parentId, price, img, setAnErro
     return (
         <li className={style['cart-item']} >
             <div className={style['cart-card']}>
-                <img src={img} alt="" width={70} height={70} />
+                <img src={img} alt='emoji' width={70} height={70} />
                 <div className={style['cart-card__main']} >
                     <p className={style['cart-card__name']}> {name} </p>
                     <p className={style['cart-card__price']} > {price} руб.</p>

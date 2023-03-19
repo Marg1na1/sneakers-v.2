@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import clsx from 'clsx';
-import style from './Card.module.scss';
 import { useClickAddHandler } from '../../hook/useClickAddHandler';
 import { useClickFavoriteHandler } from '../../hook/useClickFavoriteHandler';
+import clsx from 'clsx';
+import style from './Card.module.scss';
 
 const added = './../assets/img/plus-chaked.svg';
 const unadded = './../assets/img/unactive-plus.svg';
@@ -28,7 +28,7 @@ const Card: FC<Props> = ({ img, name, price, id, parentId, setAnError }) => {
     return (
         <li className={style['product-list__item']}>
             <div className={style['product-card']}>
-                <button className={clsx(style['product-card__favorite'], 'btn-reset')} onClick={() => onClickFavorite()}>
+                <button className={clsx(style['product-card__favorite'], 'btn-reset')} onClick={onClickFavorite}>
                     <img src={isFavorite ? liked : unliked} alt='indicator is like' />
                 </button>
                 <img src={img} alt={name} width={133} height={112} />
@@ -38,7 +38,7 @@ const Card: FC<Props> = ({ img, name, price, id, parentId, setAnError }) => {
                         <div className={style['product-card__cost']}>Цена:</div>
                         <div className={style['product-card__price']}>{price} руб.</div>
                     </div>
-                    <button className={clsx(style['product-card__btn'], 'btn-reset')} onClick={() => onClickAdded()}>
+                    <button className={clsx(style['product-card__btn'], 'btn-reset')} onClick={onClickAdded}>
                         <img src={isAdded ? added : unadded} alt='indicator is added' />
                     </button>
                 </div>

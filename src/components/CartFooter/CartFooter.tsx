@@ -1,15 +1,14 @@
-import React, { FC } from 'react';
-import style from './CartFooter.module.scss';
+import { FC } from 'react';
+import { Arrow } from '../../icons/Arrow';
 import clsx from 'clsx';
+import style from './CartFooter.module.scss';
 
-const arrow = './../assets/img/arrow.svg';
-
-type CartFooterType = {
+type Props = {
     totalPrice: number;
     checkoutSneakers: () => void;
 }
 
-const CartFooter: FC<CartFooterType> = ({ totalPrice, checkoutSneakers }) => {
+const CartFooter: FC<Props> = ({ totalPrice, checkoutSneakers }) => {
 
     return (
         <div className={style['cart-footer']}>
@@ -26,7 +25,8 @@ const CartFooter: FC<CartFooterType> = ({ totalPrice, checkoutSneakers }) => {
                 </li>
             </ul>
             <button className={clsx(style['cart-footer__btn'], 'green-btn', 'btn-reset')} onClick={() => checkoutSneakers()}>Оформить заказ
-                <img src={arrow} alt="" />
+                {/* <img src={arrow} alt="" /> */}
+                <Arrow />
             </button>
         </div>
     );

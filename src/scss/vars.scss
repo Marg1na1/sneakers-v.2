@@ -1,0 +1,19 @@
+:root {
+
+    --main-font: "Inter";
+    --content-width: 1180px;
+    --container-offset: 0px;
+    --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+
+    --light-color: #fff;
+    --black-color: #000;
+    --gray-color: #BDBDBD;
+    --light-gray-color: #EAEAEA;
+    --green-color: #9DD458;
+    --apple-green-color: #87C20A;
+    --davy-gray-color: #5c5c5c;
+    --bubbles-color: #E7F6FF;
+    --soft-scarlet-color: #fd8686;
+
+    --default-trans: .2s;
+}

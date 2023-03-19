@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import EmptyStatePage from './components/EmptyStatePage/EmptyStatePage';
+import EmptyStatePage from './pages/EmptyStatePage/EmptyStatePage';
 import Layout from './layout/Layout';
 import Favorites from './pages/Favorites/Favorites';
 import Home from './pages/Home/Home';
