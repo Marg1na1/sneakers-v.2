@@ -1,57 +1,57 @@
-@mixin big-mobile__min {
-    @media (min-width: (685px)) {
-      @content;
-    }
-}
-
-.burger{
+.burger {
     width: 28px;
     height: 28px;
     position: relative;
     background-color: transparent;
     overflow: hidden;
-    @include big-mobile__min{
+
+    @media (min-width: (685px)) {
         display: none;
     }
-    &-line{
+
+    &-line {
         position: absolute;
         width: 24px;
         height: 2px;
         background-color: var(--gray-color);
         transition: 0.3s;
         left: calc(50% - 12px);
-        &:first-child{
+
+        &:first-child {
             top: 4px;
         }
-        &:nth-child(2){
+
+        &:nth-child(2) {
             top: calc(50% - 1px);
         }
-        &:nth-child(3){
+
+        &:nth-child(3) {
             bottom: 4px;
         }
-        
+
     }
-    &--active{
-        .burger-line{
-            &:nth-child(2){
+
+    &--active {
+        .burger-line {
+            &:nth-child(2) {
                 transform: translateX(100px);
             }
-            &:first-child{
+
+            &:first-child {
                 top: calc(50% - 1px);
                 transform: rotate(45deg);
             }
-            &:nth-child(3){
+
+            &:nth-child(3) {
                 top: calc(50% - 1px);
                 transform: rotate(-45deg);
             }
         }
-    
+
     }
-    &-content{
+
+    &-content {
         position: absolute;
         top: calc(50%);
-        &___item{
-
-        }
     }
 }

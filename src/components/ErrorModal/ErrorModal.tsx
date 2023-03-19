@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { ErrorResponseType } from "../../globalTypes";
-import { useCreateErrorMessage } from "../../Hook/useCreateErrorMessage";
+import { useCreateErrorMessage } from "../../hook/useCreateErrorMessage";
 import style from './ErrorModal.module.scss';
 
 const stunnedFace = './assets/img/stunned.svg';

@@ -1,4 +1,4 @@
-import { ErrorResponseType } from './../globalTypes';
+import { ErrorResponseType } from '../globalTypes';
 import { useState, useEffect } from 'react';
 import { useAddOrderMutation, useDeleteSneakersMutation, useGetCartItemsQuery } from '../redux/sneakersAPI';
 

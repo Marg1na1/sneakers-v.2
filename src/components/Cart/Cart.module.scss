@@ -1,63 +1,57 @@
-@mixin mobile {
-    @media (max-width: (545px)) {
-      @content;
-    }
-}
-@mixin s-mobile {
-    @media (max-width: (365px)) {
-      @content;
-    }
-}
-
-.cart{
+.cart {
     position: absolute;
     width: 385px;
     background-color: var(--light-color);
     box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
     right: 0;
-    // height: 100vh;
     top: 0;
     bottom: 0;
     padding: 50px 30px 30px 30px;
-    display: flex; 
+    display: flex;
     flex-direction: column;
-    @include mobile{
+
+    @media (max-width: (545px)) {
         width: 300px;
     }
-    &-headline{
+
+    &-headline {
         display: flex;
         justify-content: space-between;
     }
-    &-btn{
+
+    &-btn {
         width: 32px;
-                height: 32px;
-                border-radius: 8px;
-                border: 1px solid var(--gray-color);
-                position: relative;
-                &::before{
-                    content: '';
-                    width: 13px;
-                    height: 2px;
-                    position: absolute;
-                    background-color: var(--gray-color);
-                    transform: rotate(45deg);
-                    top: calc(50% - 1px);
-                    right: calc(50% - 6px);
-                    border-radius: 50px;
-                }
-                &::after{
-                    content: '';
-                    width: 13px;
-                    height: 2px;
-                    position: absolute;
-                    background-color: var(--gray-color);
-                    transform: rotate(-45deg);
-                    top: calc(50% - 1px);
-                    right: calc(50% - 6px);
-                    border-radius: 50px;
-                }
+        height: 32px;
+        border-radius: 8px;
+        border: 1px solid var(--gray-color);
+        position: relative;
+
+        &::before {
+            content: '';
+            width: 13px;
+            height: 2px;
+            position: absolute;
+            background-color: var(--gray-color);
+            transform: rotate(45deg);
+            top: calc(50% - 1px);
+            right: calc(50% - 6px);
+            border-radius: 50px;
+        }
+
+        &::after {
+            content: '';
+            width: 13px;
+            height: 2px;
+            position: absolute;
+            background-color: var(--gray-color);
+            transform: rotate(-45deg);
+            top: calc(50% - 1px);
+            right: calc(50% - 6px);
+            border-radius: 50px;
+        }
     }
-    &-shadow{
+
+    &-shadow {
         position: absolute;
         left: 0;
         top: 0;
@@ -66,59 +60,70 @@
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 10;
     }
-    &-title{
+
+    &-title {
         font-weight: 700;
         font-size: 24px;
         line-height: 29px;
         color: var(--black-color);
         user-select: none;
     }
-    &-main{
+
+    &-main {
         margin-top: 30px;
         margin-bottom: 30px;
         flex: 1;
         overflow: auto;
-        &-item{
+
+        &-item {
             max-width: 325px;
             max-height: 120px;
             padding: 25px 20px;
             border: 1px solid var(--light-gray-color);
             border-radius: 20px;
-            &:not(:first-child){
+
+            &:not(:first-child) {
                 margin-top: 20px;
             }
-            @include mobile {
+
+            @media (max-width: (545px)) {
                 padding: 15px 5px;
             }
         }
-        &-card{
+
+        &-card {
             display: flex;
             align-items: center;
-            &__main{
+
+            &__main {
                 max-width: 150px;
                 margin-left: 20px;
                 margin-right: 12px;
             }
-            &__name{
+
+            &__name {
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 17px;
                 color: var(--black-color);
             }
-            &__price{
+
+            &__price {
                 font-weight: 700;
                 font-size: 14px;
                 line-height: 17px;
                 color: var(--black-color);
                 margin-top: 8px;
             }
-            &__btn{
+
+            &__btn {
                 width: 32px;
                 height: 32px;
                 border-radius: 8px;
                 border: 1px solid var(--gray-color);
                 position: relative;
-                &::before{
+
+                &::before {
                     content: '';
                     width: 13px;
                     height: 2px;
@@ -129,7 +134,8 @@
                     right: calc(50% - 6px);
                     border-radius: 50px;
                 }
-                &::after{
+
+                &::after {
                     content: '';
                     width: 13px;
                     height: 2px;
@@ -142,22 +148,22 @@
                 }
             }
         }
-        
+
     }
-    &-empty{
+
+    &-empty {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100%;
-        &-content{
+
+        &-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            &__img{
 
-            }
-            &__title{
+            &__title {
                 font-weight: 600;
                 font-size: 22px;
                 line-height: 27px;
@@ -165,7 +171,8 @@
                 text-align: center;
                 margin-top: 20px;
             }
-            &__descr{
+
+            &__descr {
                 font-weight: 400;
                 font-size: 16px;
                 line-height: 24px;
@@ -173,7 +180,8 @@
                 text-align: center;
                 margin-top: 10px;
             }
-            &__btn{
+
+            &__btn {
                 background-color: var(--green-color);
                 font-weight: 600;
                 font-size: 16px;
@@ -187,23 +195,27 @@
                 align-items: center;
                 transition: .3s;
                 margin-top: 40px;
-                img{
+
+                img {
                     margin-right: 12px;
-                    transition: .3s; 
+                    transition: .3s;
                     position: relative;
-                    
+
                 }
-                &:hover{
+
+                &:hover {
                     background: lighten(#9DD458, 5%);
-                    img{
+
+                    img {
                         transform: translateX(-10px);
                     }
                 }
-                &:active{
+
+                &:active {
                     background: darken(#9DD458, 10%);
                 }
             }
         }
     }
-    
+
 }

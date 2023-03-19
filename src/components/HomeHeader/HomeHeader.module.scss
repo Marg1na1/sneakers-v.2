@@ -1,69 +1,60 @@
-@mixin big-mobile {
-    @media (max-width: (685px)) {
-      @content;
-    }
-}
-
-@mixin mobile {
-    @media (max-width: (545px)) {
-      @content;
-    }
-}
-
-@mixin s-mobile {
-    @media (max-width: (365px)) {
-      @content;
-    }
-}
-  
-
-.product{
-    &-headline{
+.product {
+    &-headline {
         display: flex;
         justify-content: space-between;
         margin-bottom: 30px;
-        @include big-mobile {
+
+        @media (max-width: (685px)) {
             flex-direction: column;
             align-items: center;
         }
-        &__form{
+
+        &__form {
             height: 45px;
             border-radius: 10px;
             border: 1px solid var(--light-gray-color);
             max-width: 250px;
-            input{
+
+            input {
                 border-radius: 10px;
             }
-            @include big-mobile {
+
+            @media (max-width: (685px)) {
                 margin-top: 35px;
             }
-            @include s-mobile {
+
+            @media (max-width: (365px)) {
                 max-width: 200px;
             }
-            input{
-                @include s-mobile {
+
+            input {
+                @media (max-width: (365px)) {
                     max-width: 137px;
-                } 
+                }
             }
         }
-        &__btn{
+
+        &__btn {
             width: 43px;
             height: 43px;
             background-color: transparent;
             border-radius: 10px;
         }
-        &__input{
+
+        &__input {
             height: 43px;
             max-width: 205px;
             background-color: transparent;
             padding: 0;
             font-family: var(--main-font);
         }
-        h1{
-            @include mobile {
+
+        h1 {
+            @media (max-width: (545px)) {
                 font-size: 30px;
             }
-            @include s-mobile {
+
+            @media (max-width: (365px)) {
                 font-size: 27px;
             }
         }

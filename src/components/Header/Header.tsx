@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useGetTotalPrice } from '../../Hook/useGetTotalPrice';
+import { useGetTotalPrice } from '../../hook/useGetTotalPrice';
 import Burger from '../Burger/Burger';
 import BurgerContent from '../BurgerContent/BurgerContent';
 import Cart from '../Cart/Cart';

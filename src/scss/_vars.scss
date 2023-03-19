@@ -1,12 +1,10 @@
 :root {
-  // base
-//   --font-family: "Open Sans", sans-serif;
+
   --main-font: "Inter";
   --content-width: 1180px;
   --container-offset: 0px;
   --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
 
-  // colors
   --light-color: #fff;
   --black-color: #000;
   --gray-color: #BDBDBD;
@@ -16,6 +14,5 @@
   --davy-gray-color: #5c5c5c;
   --bubbles-color: #E7F6FF;
 
-  //transition
   --default-trans: .2s;
 }

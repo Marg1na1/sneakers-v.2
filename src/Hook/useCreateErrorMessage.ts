@@ -1,4 +1,4 @@
-import { ErrorResponseType } from './../globalTypes';
+import { ErrorResponseType } from '../globalTypes';
 
 export const useCreateErrorMessage = (anError: ErrorResponseType) => {
 

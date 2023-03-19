@@ -7,7 +7,7 @@ import HomeHeader from "../../components/HomeHeader/HomeHeader";
 import EmptyStatePage from "../../components/EmptyStatePage/EmptyStatePage";
 import ErrorModal from "../../components/ErrorModal/ErrorModal";
 import { ErrorResponseType } from "../../globalTypes";
-import { useDebounce } from "../../Hook/useDebounce";
+import { useDebounce } from "../../hook/useDebounce";
 
 const stunnedFace = './assets/img/stunned.svg';
 

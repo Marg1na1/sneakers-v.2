@@ -2,17 +2,12 @@ html {box-sizing: border-box;}
 *,*::before,*::after {box-sizing: border-box;}
 ul,ol {padding: 0; margin: 0; list-style: none;}
 body,h1,h2,h3,h4,p,li,figure,figcaption,blockquote,dl,dd {margin: 0;}
-body {min-height: 100vh;scroll-behavior: smooth;text-rendering: optimizeSpeed; background-color: var(--bubbles-color);}
+body {min-height: 100vh;scroll-behavior: smooth;text-rendering: optimizeSpeed; background-color: var(--bubbles-color); font-family: var(--main-font);}
 input,button,textarea,select {font: inherit;}
-// img {height: auto;max-width: 100%;object-fit: cover;}
 a {text-decoration: none; color: inherit;}
-.is-hidden {display: none !important; /* stylelint-disable-line declaration-no-important */}
+.is-hidden {display: none !important; }
 .btn-reset {border: none;
-    // padding: 0;
-    // background: transparent;
     cursor: pointer;
-    //font: inherit;
-    //color: inherit;
     outline: none;
     }
 
@@ -25,9 +20,6 @@ a {text-decoration: none; color: inherit;}
   border-radius: 20px;
   background-color: var(--light-color);
   margin-bottom: 85px;
-  @include desktop {
-    margin: 35px;
-  }
 }
 
 .input-reset {

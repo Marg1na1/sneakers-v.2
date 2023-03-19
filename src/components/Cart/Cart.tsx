@@ -6,7 +6,7 @@ import CartItem from '../CartItem/CartItem';
 import style from './Cart.module.scss';
 import CartEmpty from './CartEmpty';
 import ErrorModal from '../ErrorModal/ErrorModal';
-import { useSendOrder } from '../../Hook/useSendOrder';
+import { useSendOrder } from '../../hook/useSendOrder';
 
 type CartPropsType = {
     toggleCart: () => boolean | void;

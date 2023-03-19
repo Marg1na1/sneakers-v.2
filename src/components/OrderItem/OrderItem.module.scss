@@ -1,53 +1,42 @@
-@mixin big-mobile {
-    @media (max-width: (685px)) {
-      @content;
-    }
-}
-  
-@mixin mobile {
-      @media (max-width: (545px)) {
-        @content;
-      }
-}
-  
-@mixin s-mobile {
-      @media (max-width: (365px)) {
-        @content;
-      }
-}
+.orders-section {
+    &__item {
+        display: flex;
 
-.orders-section{
-    &__item{
-        display: flex; 
-        @include big-mobile{
+        @media (max-width: (685px)) {
             flex-direction: column;
         }
     }
-    &-info{
+
+    &-info {
         padding: 25px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between; 
-        @include big-mobile{
+        justify-content: space-between;
+
+        @media (max-width: (685px)) {
             padding: 25px 0;
         }
     }
-    &__name{
+
+    &__name {
         font-weight: 400;
         font-size: 17px;
         line-height: 19px;
         color: var(--black-color);
     }
-    &__price{
+
+    &__price {
         margin-top: 25px;
         font-weight: 400;
         font-size: 17px;
         line-height: 19px;
         color: var(--black-color);
-        @include big-mobile{
+
+        @media (max-width: (685px)) {
             margin-top: 15px;
         }
-        span{
+
+        span {
             font-weight: 400;
             font-size: 14px;
             line-height: 19px;
@@ -56,9 +45,9 @@
             margin-right: 4px;
         }
     }
-    &__img{
+
+    &__img {
         max-width: 133px;
         max-height: 112px;
     }
 }
-

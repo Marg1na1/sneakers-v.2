@@ -1,4 +1,4 @@
-import { ErrorResponseType } from './../globalTypes';
+import { ErrorResponseType } from '../globalTypes';
 import { useEffect, useState } from 'react';
 import { useAddFavoritesMutation, useDeleteFavoriteItemMutation, useGetFavoritesItemQuery } from "../redux/sneakersAPI";
 

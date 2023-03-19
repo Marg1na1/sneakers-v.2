@@ -1,28 +1,20 @@
-@mixin big-mobile {
-    @media (max-width: (685px)) {
-      @content;
-    }
-}
-
-@mixin mobile {
-    @media (max-width: (545px)) {
-      @content;
-    }
-}
-
-.orders{
+.orders {
     padding: 40px 60px;
     min-height: 75vh;
-    @include mobile {
-        padding: 40px 20px;  
+
+    @media (max-width: (545px)) {
+        padding: 40px 20px;
     }
-    &-title{
+
+    &-title {
         margin-bottom: 80px;
-        @include big-mobile {
+
+        @media (max-width: (685px)) {
             margin-bottom: 40px;
         }
     }
-    &-list{
+
+    &-list {
         display: flex;
         flex-direction: column;
     }
