@@ -1,0 +1,23 @@
+.slider {
+    max-height: 300px;
+    max-width: 1000px;
+    padding: 0 20px;
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 40px;
+
+    &-btn {
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        border-radius: 50px;
+        top: calc(50% - 17.5px);
+        z-index: 100;
+        border: none;
+        cursor: pointer;
+        background-color: var(--light-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

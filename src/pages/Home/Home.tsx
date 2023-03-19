@@ -8,6 +8,7 @@ import { ErrorResponseModel } from '../../models';
 import { useDebounce } from '../../hook/useDebounce';
 import { useGetSearchedItemsQuery } from '../../redux/sneakersAPI';
 import style from './Home.module.scss';
+import { Slider } from '../../components/Slider';
 
 const stunnedFace = './assets/img/stunned.svg';
 
@@ -57,6 +58,7 @@ const Home: FC = () => {
     return (
         <div className={style.product}>
             {anError.isError && <ErrorModal {...anError} />}
+            <Slider/>
             <HomeHeader setSearchValue={setSearchValue} searchValue={searchValue} />
             <ul className={style['product-list']}>
                 {sneakersSnip}
