@@ -5,7 +5,7 @@ import HomeHeader from '../../components/HomeHeader/HomeHeader';
 import EmptyStatePage from '../EmptyStatePage/EmptyStatePage';
 import ErrorModal from '../../components/ErrorModal/ErrorModal';
 import { ErrorResponseModel } from '../../models';
-import { useDebounce } from '../../hook/useDebounce';
+import { useDebounce } from '../../hooks/useDebounce';
 import { useGetSearchedItemsQuery } from '../../redux/sneakersAPI';
 import style from './Home.module.scss';
 import { Slider } from '../../components/Slider';
@@ -17,7 +17,7 @@ const Home: FC = () => {
     const [searchValue, setSearchValue] = useState<string>('');
     const [anError, setAnError] = useState<ErrorResponseModel | { isError: boolean }>({ isError: false });
 
-    const debouncedValue = useDebounce(searchValue)
+    const debouncedValue = useDebounce(searchValue);
 
     const { data = [], isLoading, error } = useGetSearchedItemsQuery(debouncedValue, {
         refetchOnFocus: true
@@ -58,7 +58,7 @@ const Home: FC = () => {
     return (
         <div className={style.product}>
             {anError.isError && <ErrorModal {...anError} />}
-            <Slider/>
+            <Slider />
             <HomeHeader setSearchValue={setSearchValue} searchValue={searchValue} />
             <ul className={style['product-list']}>
                 {sneakersSnip}

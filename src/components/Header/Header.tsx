@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from 'react';
-import { useGetTotalPrice } from '../../hook/useGetTotalPrice';
+import { useGetTotalPrice } from '../../hooks/useGetTotalPrice';
 import { CartIcon } from '../../icons/CartIcon';
 import { FavoriteIcon } from '../../icons/FavoriteIcon';
 import { Logotype } from '../../icons/Logotype';

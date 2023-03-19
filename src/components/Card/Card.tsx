@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { useClickAddHandler } from '../../hook/useClickAddHandler';
-import { useClickFavoriteHandler } from '../../hook/useClickFavoriteHandler';
+import { useClickAddHandler } from '../../hooks/useClickAddHandler';
+import { useClickFavoriteHandler } from '../../hooks/useClickFavoriteHandler';
 import clsx from 'clsx';
 import style from './Card.module.scss';
 
