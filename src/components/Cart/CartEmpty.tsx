@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Arrow } from '../../icons/Arrow';
+import { Arrow } from 'icons/Arrow';
 import clsx from 'clsx';
 import style from './Cart.module.scss';
 

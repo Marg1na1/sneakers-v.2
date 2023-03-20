@@ -1,5 +1,5 @@
-import { OrdersModel } from '../../models';
-import { sneakersApi } from '../sneakers.api';
+import { OrdersModel } from 'models';
+import { sneakersApi } from 'redux/sneakers.api';
 
 const injectedCart = sneakersApi.injectEndpoints({
     endpoints: (builder) => ({

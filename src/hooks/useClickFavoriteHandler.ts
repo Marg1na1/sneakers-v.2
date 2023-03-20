@@ -1,8 +1,8 @@
-import { ErrorResponseModel } from '../models';
+import { ErrorResponseModel } from 'models';
 import { useEffect, useState } from 'react';
 import {
-    useAddFavoritesMutation,
-    useDeleteFavoriteItemMutation,
+    useAddToFavoritesMutation,
+    useDeleteFromFavoriteMutation,
     useGetFavoritesItemQuery
 } from '../redux/injects/injectedFavorite';
 
@@ -12,9 +12,9 @@ export const useClickFavoriteHandler = (parentId: number, obj: any, setAnError: 
 
     const { data = [], isLoading } = useGetFavoritesItemQuery();
 
-    const [addFavorite, addFavoriteStatuses] = useAddFavoritesMutation();
+    const [addFavorite, addFavoriteStatuses] = useAddToFavoritesMutation();
 
-    const [deleteFavorite, deleteFavoriteStatuses] = useDeleteFavoriteItemMutation();
+    const [deleteFavorite, deleteFavoriteStatuses] = useDeleteFromFavoriteMutation();
 
     const onClickFavorite = async () => {
         if (data.some((obj) => Number(obj.parentId) === Number(parentId))) {

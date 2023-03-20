@@ -1,6 +1,6 @@
+import { useCreateErrorMessage } from 'hooks/useCreateErrorMessage';
+import { ErrorResponseModel } from 'models';
 import { FC } from 'react';
-import { ErrorResponseModel } from '../../models';
-import { useCreateErrorMessage } from '../../hooks/useCreateErrorMessage';
 import style from './ErrorModal.module.scss';
 
 const stunnedFace = './assets/img/stunned.svg';

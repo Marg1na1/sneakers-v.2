@@ -10,7 +10,7 @@ const injectedCart = sneakersApi.injectEndpoints({
                     ? [...result.map(({ id }) => ({ type: 'FavoriteItems' as const, id })), 'FavoriteItems']
                     : ['FavoriteItems'],
         }),
-        addFavorites: builder.mutation({
+        addToFavorites: builder.mutation({
             query: ({ ...data }) => ({
                 url: 'favorites',
                 method: 'POST',
@@ -18,7 +18,7 @@ const injectedCart = sneakersApi.injectEndpoints({
             }),
             invalidatesTags: ['FavoriteItems'],
         }),
-        deleteFavoriteItem: builder.mutation({
+        deleteFromFavorite: builder.mutation({
             query: (id) => ({
                 url: `favorites/${id}`,
                 method: 'DELETE',
@@ -31,6 +31,6 @@ const injectedCart = sneakersApi.injectEndpoints({
 
 export const {
     useGetFavoritesItemQuery,
-    useAddFavoritesMutation,
-    useDeleteFavoriteItemMutation
+    useAddToFavoritesMutation,
+    useDeleteFromFavoriteMutation
 } = injectedCart;

@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
-import { Card } from '../../components/Card';
-import Skeleton from '../../Skeletons/CardSkeleton';
-import { EmptyStatePage } from '../EmptyStatePage';
-import { ErrorModal } from '../../components/ErrorModal';
-import { useGetFavoritesItemQuery } from '../../redux/injects/injectedFavorite';
+import Skeleton from 'Skeletons/CardSkeleton';
+import { Card } from 'components/Card';
+import { ErrorModal } from 'components/ErrorModal';
+import { EmptyStatePage } from 'pages/EmptyStatePage';
+import { useGetFavoritesItemQuery } from 'redux/injects/injectedFavorite';
 import style from './Favorites.module.scss';
 
 const stunnedFace = './assets/img/stunned.svg';

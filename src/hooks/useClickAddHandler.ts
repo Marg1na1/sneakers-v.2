@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { ErrorResponseModel, SneakersModel } from '../models';
+import { ErrorResponseModel, SneakersModel } from 'models';
 import {
-    useAddSneakersMutation,
-    useDeleteSneakersMutation,
+    useAddSneakersToCartMutation,
+    useDeleteSneakersFromCartMutation,
     useGetCartItemsQuery
 } from '../redux/injects/injectedCart';
 
@@ -12,9 +12,9 @@ export const useClickAddHandler = (parentId: number, obj: SneakersModel, setAnEr
 
     const { data = [], isLoading } = useGetCartItemsQuery();
 
-    const [addSneakers, addSneakersStatuses] = useAddSneakersMutation();
+    const [addSneakers, addSneakersStatuses] = useAddSneakersToCartMutation();
 
-    const [deleteItem, deleteItemStatuses] = useDeleteSneakersMutation();
+    const [deleteItem, deleteItemStatuses] = useDeleteSneakersFromCartMutation();
 
     const onClickAdded = async () => {
         if (data.some((obj) => Number(obj.parentId) === Number(parentId))) {

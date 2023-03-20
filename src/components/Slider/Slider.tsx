@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { MarkIcon } from '../../icons/MarkIcon';
+import { MarkIcon } from 'icons/MarkIcon';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';

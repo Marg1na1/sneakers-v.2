@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { Card } from 'components/Card';
 import Skeleton from 'Skeletons/CardSkeleton';
 import { HomeHeader } from 'components/HomeHeader';
-import { EmptyStatePage } from '../EmptyStatePage';
+import { EmptyStatePage } from 'pages/EmptyStatePage';
 import { ErrorModal } from 'components/ErrorModal';
 import { ErrorResponseModel } from 'models';
 import { useDebounce } from 'hooks/useDebounce';

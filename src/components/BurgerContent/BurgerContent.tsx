@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { CartIcon } from '../../icons/CartIcon';
-import { FavoriteIcon } from '../../icons/FavoriteIcon';
-import { OrdersIcon } from '../../icons/OrdersIcon';
+import { CartIcon } from 'icons/CartIcon';
+import { FavoriteIcon } from 'icons/FavoriteIcon';
+import { OrdersIcon } from 'icons/OrdersIcon';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import style from './BurgerContent.module.scss';

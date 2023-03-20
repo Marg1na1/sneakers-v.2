@@ -1,6 +1,6 @@
-import { ErrorResponseModel } from '../models';
+import { ErrorResponseModel } from 'models';
 import { useState, useEffect } from 'react';
-import { useDeleteSneakersMutation, useGetCartItemsQuery } from '../redux/injects/injectedCart';
+import { useDeleteSneakersFromCartMutation, useGetCartItemsQuery } from '../redux/injects/injectedCart';
 import { useAddOrderMutation } from '../redux/injects/injectedOrder';
 
 export const useSendOrder = (setAnError: (x: ErrorResponseModel | any) => void) => {
@@ -11,7 +11,7 @@ export const useSendOrder = (setAnError: (x: ErrorResponseModel | any) => void) 
 
     const [addOrders, addOrdersStatuses] = useAddOrderMutation();
 
-    const [deleteCartItems, deleteCartItemsStatuses] = useDeleteSneakersMutation();
+    const [deleteCartItems, deleteCartItemsStatuses] = useDeleteSneakersFromCartMutation();
 
     const checkoutSneakers = async () => {
         await addOrders(data);

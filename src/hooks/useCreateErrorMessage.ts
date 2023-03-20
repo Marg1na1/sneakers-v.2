@@ -1,4 +1,4 @@
-import { ErrorResponseModel } from '../models';
+import { ErrorResponseModel } from 'models';
 
 export const useCreateErrorMessage = (anError: ErrorResponseModel) => {
 

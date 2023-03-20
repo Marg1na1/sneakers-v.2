@@ -1,14 +1,14 @@
 import { FC, useState, useEffect } from 'react';
-import { useGetTotalPrice } from '../../hooks/useGetTotalPrice';
-import { CartIcon } from '../../icons/CartIcon';
-import { FavoriteIcon } from '../../icons/FavoriteIcon';
-import { Logotype } from '../../icons/Logotype';
-import { OrdersIcon } from '../../icons/OrdersIcon';
-import { Burger } from '../Burger';
-import { BurgerContent } from '../BurgerContent';
-import { Cart } from '../Cart';
+import { useGetTotalPrice } from 'hooks/useGetTotalPrice';
+import { CartIcon } from 'icons/CartIcon';
+import { FavoriteIcon } from 'icons/FavoriteIcon';
+import { Logotype } from 'icons/Logotype';
+import { OrdersIcon } from 'icons/OrdersIcon';
+import { Cart } from 'components/Cart';
+import { BurgerContent } from 'components/BurgerContent';
+import { Burger } from 'components/Burger';
 import { Link } from 'react-router-dom';
-import style from './../Header/Headaer.module.scss';
+import style from './Header.module.scss';
 
 const Header: FC = () => {
 

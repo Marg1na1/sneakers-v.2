@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { useDeleteSneakersMutation } from '../../redux/injects/injectedCart';
+import { useDeleteSneakersFromCartMutation } from 'redux/injects/injectedCart';
 import clsx from 'clsx';
 import style from './CartItem.module.scss';
 
@@ -14,7 +14,7 @@ type Props = {
 
 const CartItem: FC<Props> = ({ id, name, price, img, setAnError }) => {
 
-    const [deleteItem, deleteItemStatuses] = useDeleteSneakersMutation();
+    const [deleteItem, deleteItemStatuses] = useDeleteSneakersFromCartMutation();
 
     const clickDelete = async (id: string) => {
         await deleteItem(id)

@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { EmptyStatePage } from '../EmptyStatePage';
-import { OrderSection } from '../../components/OrderSection';
-import { useGetOrdersQuery } from '../../redux/injects/injectedOrder';
+import { OrderSection } from 'components/OrderSection';
+import { EmptyStatePage } from 'pages/EmptyStatePage';
+import { useGetOrdersQuery } from 'redux/injects/injectedOrder';
 import style from './Orders.module.scss';
 
 const stunnedFace = './assets/img/stunned.svg';

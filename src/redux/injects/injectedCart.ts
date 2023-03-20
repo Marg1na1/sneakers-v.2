@@ -1,5 +1,5 @@
-import { CartSneakersModel } from '../../models';
-import { sneakersApi } from '../sneakers.api';
+import { CartSneakersModel } from 'models';
+import { sneakersApi } from 'redux/sneakers.api';
 
 const injectedCart = sneakersApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -10,7 +10,7 @@ const injectedCart = sneakersApi.injectEndpoints({
                     ? [...result.map(({ id }) => ({ type: 'CartItems' as const, id })), 'CartItems']
                     : ['CartItems'],
         }),
-        addSneakers: builder.mutation({
+        addSneakersToCart: builder.mutation({
             query: ({ id, ...data }) => ({
                 url: `cartItems`,
                 method: 'POST',
@@ -18,7 +18,7 @@ const injectedCart = sneakersApi.injectEndpoints({
             }),
             invalidatesTags: ['CartItems'],
         }),
-        deleteSneakers: builder.mutation({
+        deleteSneakersFromCart: builder.mutation({
             query: (id) => ({
                 url: `cartItems/${id}`,
                 method: 'DELETE',
@@ -31,6 +31,6 @@ const injectedCart = sneakersApi.injectEndpoints({
 
 export const {
     useGetCartItemsQuery,
-    useAddSneakersMutation,
-    useDeleteSneakersMutation
+    useAddSneakersToCartMutation,
+    useDeleteSneakersFromCartMutation
 } = injectedCart;

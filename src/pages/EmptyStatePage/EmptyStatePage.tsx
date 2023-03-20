@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Arrow } from '../../icons/Arrow';
+import { Arrow } from 'icons/Arrow';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import style from './EmptyStatePage.module.scss';

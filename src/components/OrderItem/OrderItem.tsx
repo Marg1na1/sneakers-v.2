@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { CartSneakersModel } from '../../models';
+import { CartSneakersModel } from 'models';
 import style from './OrderItem.module.scss';
 
 const OrderItem: FC<CartSneakersModel> = ({ img, name, price }) => {
