@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { useGetCartItemsQuery } from '../../redux/sneakersAPI';
+import { useGetCartItemsQuery } from '../../redux/injects/injectedCart';
 import { CartFooter } from '../CartFooter';
 import { CartItem } from '../CartItem';
 import { useSendOrder } from '../../hooks/useSendOrder';
@@ -41,13 +41,9 @@ const Cart: FC<Props> = ({ toggleCart, totalPrice }) => {
                         <h2 className={style['cart-title']}>Корзина</h2>
                         <button className={clsx(style['cart-btn'], 'btn-reset')} onClick={toggleCart}></button>
                     </div>
-                    {
-                        <>
-                            <ul className={style['cart-main']}>
-                                <CartEmpty toggleCart={toggleCart} />
-                            </ul>
-                        </>
-                    }
+                    <ul className={style['cart-main']}>
+                        <CartEmpty toggleCart={toggleCart} />
+                    </ul>
                 </div>
             </div>
         );

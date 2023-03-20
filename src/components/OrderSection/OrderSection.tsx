@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { OrderItem } from '../OrderItem';
-import { useDeleteOrderMutation } from '../../redux/sneakersAPI';
+import { useDeleteOrderMutation } from '../../redux/injects/injectedOrder';
 import { OrdersModel } from '../../models';
 import clsx from 'clsx';
 import style from './OrderSection.module.scss';

@@ -1,6 +1,10 @@
-import { ErrorResponseModel} from '../models';
+import { ErrorResponseModel } from '../models';
 import { useEffect, useState } from 'react';
-import { useAddFavoritesMutation, useDeleteFavoriteItemMutation, useGetFavoritesItemQuery } from '../redux/sneakersAPI';
+import {
+    useAddFavoritesMutation,
+    useDeleteFavoriteItemMutation,
+    useGetFavoritesItemQuery
+} from '../redux/injects/injectedFavorite';
 
 export const useClickFavoriteHandler = (parentId: number, obj: any, setAnError: (x: ErrorResponseModel | any) => void) => {
 

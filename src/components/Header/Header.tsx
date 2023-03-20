@@ -8,7 +8,7 @@ import { Burger } from '../Burger';
 import { BurgerContent } from '../BurgerContent';
 import { Cart } from '../Cart';
 import { Link } from 'react-router-dom';
-import style from './../Header/Hedaer.module.scss';
+import style from './../Header/Headaer.module.scss';
 
 const Header: FC = () => {
 

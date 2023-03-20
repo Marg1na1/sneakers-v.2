@@ -1,6 +1,7 @@
 import { ErrorResponseModel } from '../models';
 import { useState, useEffect } from 'react';
-import { useAddOrderMutation, useDeleteSneakersMutation, useGetCartItemsQuery } from '../redux/sneakersAPI';
+import { useDeleteSneakersMutation, useGetCartItemsQuery } from '../redux/injects/injectedCart';
+import { useAddOrderMutation } from '../redux/injects/injectedOrder';
 
 export const useSendOrder = (setAnError: (x: ErrorResponseModel | any) => void) => {
 

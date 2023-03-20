@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useGetCartItemsQuery } from '../redux/sneakersAPI';
+import { useGetCartItemsQuery } from '../redux/injects/injectedCart';
 
 export const useGetTotalPrice = () => {
 

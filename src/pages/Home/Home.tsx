@@ -1,14 +1,14 @@
 import { FC, useState } from 'react';
-import { Card } from '../../components/Card';
-import Skeleton from '../../Skeletons/CardSkeleton';
-import { HomeHeader } from '../../components/HomeHeader';
+import { Card } from 'components/Card';
+import Skeleton from 'Skeletons/CardSkeleton';
+import { HomeHeader } from 'components/HomeHeader';
 import { EmptyStatePage } from '../EmptyStatePage';
-import { ErrorModal } from '../../components/ErrorModal';
-import { ErrorResponseModel } from '../../models';
-import { useDebounce } from '../../hooks/useDebounce';
-import { useGetSearchedItemsQuery } from '../../redux/sneakersAPI';
+import { ErrorModal } from 'components/ErrorModal';
+import { ErrorResponseModel } from 'models';
+import { useDebounce } from 'hooks/useDebounce';
+import { Slider } from 'components/Slider';
+import { useGetSneakersQuery } from 'redux/injects/injectedSneakers';
 import style from './Home.module.scss';
-import { Slider } from '../../components/Slider';
 
 const stunnedFace = './assets/img/stunned.svg';
 
@@ -19,9 +19,7 @@ const Home: FC = () => {
 
     const debouncedValue = useDebounce(searchValue);
 
-    const { data = [], isLoading, error } = useGetSearchedItemsQuery(debouncedValue, {
-        refetchOnFocus: true
-    });
+    const { data = [], isLoading, error } = useGetSneakersQuery(debouncedValue);
 
     const sneakersSnip = data.map(obj => <Card key={obj.id} {...obj} setAnError={setAnError} />);
     const sneakersSkeleton = [...new Array(8)].map((_, index) => <Skeleton key={index} />);

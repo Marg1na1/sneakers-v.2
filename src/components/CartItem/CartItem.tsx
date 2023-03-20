@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { useDeleteSneakersMutation } from '../../redux/sneakersAPI';
+import { useDeleteSneakersMutation } from '../../redux/injects/injectedCart';
 import clsx from 'clsx';
 import style from './CartItem.module.scss';
 

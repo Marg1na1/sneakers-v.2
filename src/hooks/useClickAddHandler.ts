@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { ErrorResponseModel, SneakersModel } from '../models';
-import { useAddSneakersMutation, useDeleteSneakersMutation, useGetCartItemsQuery } from '../redux/sneakersAPI';
+import {
+    useAddSneakersMutation,
+    useDeleteSneakersMutation,
+    useGetCartItemsQuery
+} from '../redux/injects/injectedCart';
 
 export const useClickAddHandler = (parentId: number, obj: SneakersModel, setAnError: (x: ErrorResponseModel | any) => void) => {
 
