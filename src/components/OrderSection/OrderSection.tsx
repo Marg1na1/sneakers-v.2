@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import OrderItem from './../OrderItem/OrderItem';
+import { OrderItem } from '../OrderItem';
 import { useDeleteOrderMutation } from '../../redux/sneakersAPI';
 import { OrdersModel } from '../../models';
 import clsx from 'clsx';

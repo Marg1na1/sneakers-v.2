@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useGetCartItemsQuery } from '../../redux/sneakersAPI';
-import CartFooter from '../CartFooter/CartFooter';
-import CartItem from '../CartItem/CartItem';
+import { CartFooter } from '../CartFooter';
+import { CartItem } from '../CartItem';
 import { useSendOrder } from '../../hooks/useSendOrder';
 import CartEmpty from './CartEmpty';
 import ErrorModal from '../ErrorModal/ErrorModal';

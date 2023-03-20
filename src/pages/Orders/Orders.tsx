@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import EmptyStatePage from '../EmptyStatePage/EmptyStatePage';
-import OrderSection from '../../components/OrderSection/OrderSection';
+import { EmptyStatePage } from '../EmptyStatePage';
+import { OrderSection } from '../../components/OrderSection';
 import { useGetOrdersQuery } from '../../redux/sneakersAPI';
 import style from './Orders.module.scss';
 

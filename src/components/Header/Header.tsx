@@ -4,9 +4,9 @@ import { CartIcon } from '../../icons/CartIcon';
 import { FavoriteIcon } from '../../icons/FavoriteIcon';
 import { Logotype } from '../../icons/Logotype';
 import { OrdersIcon } from '../../icons/OrdersIcon';
-import Burger from '../Burger/Burger';
-import BurgerContent from '../BurgerContent/BurgerContent';
-import Cart from '../Cart/Cart';
+import { Burger } from '../Burger';
+import { BurgerContent } from '../BurgerContent';
+import { Cart } from '../Cart';
 import { Link } from 'react-router-dom';
 import style from './../Header/Hedaer.module.scss';
 

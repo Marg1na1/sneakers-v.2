@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
-import Card from '../../components/Card/Card';
-import Skeleton from '../../components/Card/Skeleton';
-import HomeHeader from '../../components/HomeHeader/HomeHeader';
-import EmptyStatePage from '../EmptyStatePage/EmptyStatePage';
-import ErrorModal from '../../components/ErrorModal/ErrorModal';
+import { Card } from '../../components/Card';
+import Skeleton from '../../Skeletons/CardSkeleton';
+import { HomeHeader } from '../../components/HomeHeader';
+import { EmptyStatePage } from '../EmptyStatePage';
+import { ErrorModal } from '../../components/ErrorModal';
 import { ErrorResponseModel } from '../../models';
 import { useDebounce } from '../../hooks/useDebounce';
 import { useGetSearchedItemsQuery } from '../../redux/sneakersAPI';

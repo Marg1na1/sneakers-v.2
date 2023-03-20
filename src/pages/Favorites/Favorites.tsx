@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
-import Card from '../../components/Card/Card';
-import Skeleton from '../../components/Card/Skeleton';
-import EmptyStatePage from '../EmptyStatePage/EmptyStatePage';
-import ErrorModal from '../../components/ErrorModal/ErrorModal';
+import { Card } from '../../components/Card';
+import Skeleton from '../../Skeletons/CardSkeleton';
+import { EmptyStatePage } from '../EmptyStatePage';
+import { ErrorModal } from '../../components/ErrorModal';
 import { useGetFavoritesItemQuery } from '../../redux/sneakersAPI';
 import style from './Favorites.module.scss';
 
